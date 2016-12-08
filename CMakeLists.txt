@@ -40,7 +40,7 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 # GROUP SOURCES AND CREATE PROJECT
 SET(HEADER_FILES
-  "Main.h"
+  "main.h"
   "BezierCurve.h"
   "NURBSCurve.h"
   "CurveRendering.h"
@@ -48,7 +48,7 @@ SET(HEADER_FILES
   "Vec4.h"
 )
 SET(SOURCE_FILES
-  "Main.cpp"
+  "main.cpp"
   "BezierCurve.cpp"
   "NURBSCurve.cpp"
   "CurveRendering.cpp"
