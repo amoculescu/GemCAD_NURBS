@@ -18,6 +18,8 @@ public:
 	// constructor which takes given control points
 	BezierCurve(const std::vector<Vec3f>& controlPoints_, bool isRational = false);
 
+    void push(Vec3f ctrlPt);
+
 	// evaluate the curve at parameter t with de Casteljau algorithm. Returns both bezier curves seperated at parameter t.
 	std::pair<BezierCurve, BezierCurve> separateCurveAt(const float t);
 

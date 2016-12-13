@@ -1,7 +1,9 @@
 #define RADPERDEG 0.0174533
 
+#include "stdio.h"
+#include "iostream"
 #include "CurveRendering.h"
-
+#include <cmath>
 #include <GL/glut.h>
 #include <BezierCurve.h>
 #include <NURBSCurve.h>
@@ -10,14 +12,90 @@
 
 void drawBezier(BezierCurve &bezierCurve, Vec3f color)
 {
-	// TODO: implement the visualization of the 3D bezier curve (e.g. with GL_LINE_STRIP)
-	// ===============================================================================
+    auto ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
+    Vec3f p = Vec3f(0.0f, 0.0f, 0.0f);
+    float bernstein;
+    float n = bezierCurve.getControlPoints().size() - 1;
 
-
-	// ===============================================================================
+    glBegin(GL_LINE_STRIP);
+    glColor3fv(&color.x);
+    for (float u = 0; u <= 1; u += 0.01)
+    {
+        Vec3f p;
+        ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
+        for(int i = 0; i <= n; i++)
+        {
+            bernstein = calcBernstein(n, i, u);
+            Vec3f b = *ptrToCtrlPoint;
+            Vec3f b2 = b * bernstein;
+            p += b2;
+            std::cout << "bernstein: " << bernstein << " b: " << b << " b2: " << b2 << " p: " << p << std::endl;
+            if(*ptrToCtrlPoint != bezierCurve.getControlPoints().back())
+            {
+                std::advance(ptrToCtrlPoint, 1);
+            }
+         }
+        glVertex3fv(&p.x);
+    }
+    glEnd();
 }
+
+float calcBernstein(int n, int i, float u)
+{
+    float result;
+    if(i == 0)
+    {
+        result = pow((1 - u), n);
+    }
+    else if( n == i)
+    {
+        result = pow(u, i);
+    }
+    else
+    {
+        result = binCoefficient(n, i) * pow((1 - u), (n - i)) * pow(u, i);
+    }
+    //std::cout << "b(u), n: " << n << " i: " << i << " = " << result << std::endl;
+    //std::cout << "berstein polynomial: " << result << std::endl;
+    return result;
+}
+
+float binCoefficient(int n, int i)
+{
+    float a = factorial(n);
+    float b = factorial(i);
+    float c = factorial(n - i);
+    float result = a / (b * c);
+    //std::cout << "binomial coefficient: " << result << std::endl;
+    return result;
+}
+
+float factorial(float n)
+{
+    float result = 1;
+    if(n != 0)
+    {
+         for(int i = 1; i <= n; i++)
+        {
+            result *= i;
+        }
+    }
+    //std::cout << "factorial: " << result << std::endl;
+    return result;
+}
+
 void drawBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color)
 {
+     glBegin(GL_LINE_STRIP);
+     auto ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
+     for(int i = 0; i < bezierCurve.getControlPoints().size(); i++)
+     {
+         Vec3f p = p + *ptrToCtrlPoint;
+         glVertex3fv(&p.x);
+         std::advance(ptrToCtrlPoint, 1);
+     }
+     glEnd();
+
 	// TODO: implement the visualization of the 3D bezier curves control polygon (e.g. with GL_LINE_STRIP)
 	// ===============================================================================
 	// cps of the complete curve
@@ -25,6 +103,7 @@ void drawBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color)
 
 	// ===============================================================================
 }
+
 void drawRationalBezier(BezierCurve &bezierCurve, Vec3f color)
 {
 	if (bezierCurve.isRational())

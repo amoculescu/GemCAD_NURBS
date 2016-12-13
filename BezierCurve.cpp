@@ -13,6 +13,12 @@ BezierCurve::BezierCurve(const std::vector<Vec3f>& controlPoints_, bool isRation
 	, rational(isRational_)
 {
 }
+
+void BezierCurve::push(Vec3f ctrlPt)
+{
+    controlPoints.push_back(ctrlPt);
+}
+
 // splits the bezier curve into two at u=t
 std::pair<BezierCurve, BezierCurve> BezierCurve::separateCurveAt(const float t)
 {

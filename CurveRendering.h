@@ -16,6 +16,10 @@ class BezierCurve;
 class NURBSCurve;
 
 // render evaluation information of the bezier curve wit parameter t of the half edge
+float factorial(float n);void drawBernsteinPolynom(int i, int n);
+float calcBernstein(int n, int i, float u);
+float binCoefficient(int n, int i);
+
 void drawBezier(BezierCurve &bezierCurve, Vec3f color);
 void drawRationalBezier(BezierCurve &bezierCurve, Vec3f color);
 void drawBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color);

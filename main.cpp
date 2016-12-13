@@ -13,7 +13,7 @@
 // ========================================================================= //
 
 #include "main.h"		// this header
-
+#include "vector"
 #include <stdlib.h>		// standard library
 #include <cmath>		// fmod
 #include <stdio.h>		// cout
@@ -25,12 +25,18 @@
 // === BASICS ===
 // ==============
 
+Vec3f ctrlPts[] = {Vec3f(1.0f, 1.0f, 1.0f),
+                      Vec3f(3.0f, 3.0f, 1.0f),
+                      Vec3f(7.0f, 4.0f, 1.0f),
+                      Vec3f(9.0f, 2.0f, 1.0f)
+                     };
+
 int main(int argc, char** argv)
 {
 	// initialize openGL window
 	glutInit(&argc, argv);
 	glutInitWindowPosition(300, 200);
-	glutInitWindowSize(600, 400);
+    glutInitWindowSize(2400, 1500);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow("TU Darmstadt, FSchuwirth");
 	// link functions to certain openGL events
@@ -135,9 +141,16 @@ void drawCS()
 
 void drawObjects()
 {
+    BezierCurve* myBezier = new BezierCurve();
+    for(int i = 0; i < 4; i++)
+    {
+        myBezier->push(ctrlPts[i]);
+    }
+    drawBezierCtrlPolygon(*myBezier, Vec3f(0.0f, 0.0f, 1.0f));
+    drawBezier(*myBezier, Vec3f(1.0f, 1.0f, 1.0f));
 	for(unsigned int i = 0; i < bezierCurves.size(); ++i)
 	{
-		renderBezier(bezierCurves[i]);
+        renderBezier(bezierCurves[i]);
 		if(i == activeBezier)
 			renderBezierEvaluation(bezierCurves[i], evalParameter);
 	}
