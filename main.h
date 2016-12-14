@@ -51,6 +51,8 @@ void createCurves();
 
 void reshape(GLint width, GLint height);
 
+void fillArray();
+
 // =================
 // === RENDERING ===
 // =================

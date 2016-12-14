@@ -13,13 +13,12 @@
 void drawBezier(BezierCurve &bezierCurve, Vec3f color)
 {
     auto ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
-    Vec3f p = Vec3f(0.0f, 0.0f, 0.0f);
     float bernstein;
     float n = bezierCurve.getControlPoints().size() - 1;
 
     glBegin(GL_LINE_STRIP);
     glColor3fv(&color.x);
-    for (float u = 0; u <= 1; u += 0.01)
+    for (float u = 0; u <= 1; u += 0.005)
     {
         Vec3f p;
         ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
@@ -29,7 +28,7 @@ void drawBezier(BezierCurve &bezierCurve, Vec3f color)
             Vec3f b = *ptrToCtrlPoint;
             Vec3f b2 = b * bernstein;
             p += b2;
-            std::cout << "bernstein: " << bernstein << " b: " << b << " b2: " << b2 << " p: " << p << std::endl;
+            //std::cout << "bernstein: " << bernstein << " b: " << b << " b2: " << b2 << " p: " << p << std::endl;
             if(*ptrToCtrlPoint != bezierCurve.getControlPoints().back())
             {
                 std::advance(ptrToCtrlPoint, 1);
@@ -86,7 +85,8 @@ float factorial(float n)
 
 void drawBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color)
 {
-     glBegin(GL_LINE_STRIP);
+     glBegin(GL_POINTS);
+     glColor3fv(&color.x);
      auto ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
      for(int i = 0; i < bezierCurve.getControlPoints().size(); i++)
      {
@@ -108,24 +108,29 @@ void drawRationalBezier(BezierCurve &bezierCurve, Vec3f color)
 {
 	if (bezierCurve.isRational())
 	{
-		// TODO: implement the visualization of the 2D rational bezier curve in the plane w=1 (e.g. with GL_LINE_STRIP)
-		// ===============================================================================
+        // TODO: implement the visualization of the 2D rational bezier curve in the plane w=1 (e.g. with GL_LINE_STRIP)
+        // ===============================================================================
 
 
-		// ===============================================================================
-	}
+        // ===============================================================================
+    }
 }
 void drawRationalBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color)
 {
 	if (bezierCurve.isRational())
 	{
-		// TODO: implement the visualization of the 2D rational bezier curves control polygon in the plane w=1 (e.g. with GL_LINE_STRIP)
-		// ===============================================================================
-		// cps of the complete curve
+        glBegin(GL_LINE_STRIP);
+        glColor3fv(&color.x);
+        auto ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
+        for(int i = 0; i < bezierCurve.getControlPoints().size(); i++)
+        {
+            Vec3f p = p + *ptrToCtrlPoint;
+            glVertex3fv(&p.x);
+            std::advance(ptrToCtrlPoint, 1);
 
-
-		// ===============================================================================
-	}
+        }
+        glEnd();
+    }
 }
 
 void drawNURBS(NURBSCurve &nurbsCurve, Vec3f color)
@@ -167,11 +172,10 @@ void drawNURBSCtrlPolygon_H(const NURBSCurve &nurbsCurve, Vec3f color)
 	// =========================================================================================================
 }
 
-void renderBezier(BezierCurve &bezierCurve)
+void renderBezier(BezierCurve &bezierCurve, Vec3f color)
 {
 	auto pointsAndTangents = bezierCurve.evaluateCurve(size_t(100));
 	bool rational = bezierCurve.isRational();
-	Vec3f color = Vec3f(0.0f, 1.0f, 1.0f);
 	if (bezierCurve.isRational())
 	{
 		drawRationalBezier(bezierCurve, color);

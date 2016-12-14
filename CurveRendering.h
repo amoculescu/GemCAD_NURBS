@@ -31,7 +31,7 @@ void drawNURBSCtrlPolygon(const NURBSCurve &nurbsCurve, Vec3f color);
 void drawNURBSCtrlPolygon_H(const NURBSCurve &nurbsCurve, Vec3f color);
 
 
-void renderBezier(BezierCurve &bezierCurve);
+void renderBezier(BezierCurve &bezierCurve, Vec3f color);
 void renderBezierEvaluation(BezierCurve &bezierCurve, float t);
 void renderNURBS(NURBSCurve &nurbsCurve);
 void renderNURBSEvaluation(NURBSCurve &nurbsCurve, float t);
