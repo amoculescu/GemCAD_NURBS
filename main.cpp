@@ -19,12 +19,12 @@
 #include <iostream>		// cout
 #include <CurveRendering.h>
 
-#define arraySize 10
+#define numberPoints 10
 // ==============
 // === BASICS ===
 // ==============
 
-Vec3f ctrlPts[arraySize];
+std::vector<Vec3f> ctrlPts;
 
 int main(int argc, char** argv)
 {
@@ -136,44 +136,26 @@ void drawCS()
 
 void fillArray()
 {
-    for(int i = 0; i < arraySize; i++)
+    for(int i = 0; i < numberPoints; i++)
     {
         float grow = pow(i, 2) * 0.1;
-        ctrlPts[i] = Vec3f(i, grow, grow);
-    }
-    for(int i = 0; i < arraySize; i++)
-    {
-        std::cout << ctrlPts[i] << std::endl;
+        ctrlPts.push_back(Vec3f(i , grow, grow));
     }
 }
 
 void drawObjects()
 {
-    Vec3f curveColor = Vec3f(0.0f, 1.0f, 1.0f);
-    fillArray();
-    BezierCurve* myBezier = new BezierCurve();
-    for(int i = 0; i < arraySize; i++)
+    Vec3f curveColor = Vec3f(0.1f, 0.1f, 0.1f);
+    Vec3f ctrlPolygonCol = Vec3f(1.0f, 0.0f, 0.0f);
+    for(unsigned int i = 0; i < bezierCurves.size(); i++)
     {
-        myBezier->push(ctrlPts[i]);
-    }
-    renderBezier(*myBezier, curveColor);
-    drawBezierCtrlPolygon(*myBezier, Vec3f(0.0f, 0.0f, 1.0f));
-    //bezierCurves.push_back(myBezier);
-
-    //std::pair<BezierCurve, BezierCurve> curves = myBezier->separateCurveAt(0.5);
-    //bezierCurves.push_back(curves.first);
-    //bezierCurves.push_back(curves.second);
-
-
-    auto ptrToLast = bezierCurves.begin();
-    for(unsigned int i = 0; i < bezierCurves.size(); ++i)
-    {
-
-        renderBezier(*ptrToLast, curveColor);
-        drawBezierCtrlPolygon(*ptrToLast, Vec3f(1.0f, 0.0f, 0.0f));
+        renderBezier(bezierCurves[i], curveColor);
+        drawBezierCtrlPolygon(bezierCurves[i], ctrlPolygonCol);
+        //curveColor = curveColor +  Vec3f(0.0f, 0.3f, 0.3f);
+        //ctrlPolygonCol = ctrlPolygonCol + Vec3f(0.0f, 0.5f, 0.0f);
+        renderBezierEvaluation(bezierCurves[0], 0.5);
         //if(i == activeBezier)
-        //    renderBezierEvaluation(*ptrToLast, evalParameter);
-        std::advance(ptrToLast, 1);
+        //    renderBezierEvaluation(bezierCurves[i], evalParameter);
     }
     for(unsigned int i = 0; i < nurbsCurves.size(); ++i)
     {
@@ -211,21 +193,33 @@ void keyPressed(unsigned char key, int x, int y)
     switch(key)
     {
     // esc => exit
-    case 27:
-        exit(0);
+        case 27:
+            exit(0);
         break;
     // help file
-    case 'h' :
-    case 'H' :
-        coutHelp();
-        break;
-    // reset view
-    case 'r' :
-    case 'R' :
-        setDefaults();
-        glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
-        break;
-    // TODO: place custom functions on button events here to present your results
+        case 'h' :
+        case 'H' :
+            coutHelp();
+            break;
+            // reset view
+        case 'r' :
+        case 'R' :
+            setDefaults();
+            glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
+            break;
+        case 's':
+        case 'S':
+            separateLast();
+            glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
+            break;
+        case 'f' :
+        case 'F' :
+            fillArray();
+            BezierCurve* myBezier = new BezierCurve(ctrlPts);
+            bezierCurves.push_back(*myBezier);
+            glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
+            break;
+    // TODO: place custom functions on button evyents here to present your results
     // like changing the active Bbezier/NURBS curve (activeNURBS, activeBezier)
     // and varying the evaluation parameter (evalParameter) for the bezier curve
     // ==========================================================================
@@ -233,6 +227,13 @@ void keyPressed(unsigned char key, int x, int y)
 
     // ==========================================================================
     }
+}
+
+void separateLast()
+{
+    std::pair<BezierCurve, BezierCurve> curves = bezierCurves[bezierCurves.size() - 1].separateCurveAt(0.5);
+    bezierCurves.push_back(curves.first);
+    bezierCurves.push_back(curves.second);
 }
 
 void mousePressed(int button, int state, int x, int y)

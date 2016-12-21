@@ -3,6 +3,7 @@
 #include <stdio.h>		// cout
 #include <iostream>		// cout
 
+
 BezierCurve::BezierCurve(bool isRational_)
     : rational(isRational_)
 {
@@ -26,43 +27,30 @@ std::pair<BezierCurve, BezierCurve> BezierCurve::separateCurveAt(const float t)
     if(n != 1)
     {
         std::vector<Vec3f> cps1, cps2;
-        float n = getControlPoints().size() - 1;
-        auto ptrToFirst = controlPoints.begin();
-        auto ptrToLast = controlPoints.end();
-        Vec3f* ptArray[int(n + 1)][int(n + 1)];
-        int counter;
-
-        while(*ptrToFirst != *ptrToLast)
-        {
-            *(ptArray[0][counter]) = *ptrToFirst;
-            std::advance(ptrToFirst, 1);
-            counter++;
-        }
-        counter = n;
+        float n = controlPoints.size() - 1;
+        std::vector<Vec3f> ptArray;
+        std::vector<Vec3f> tempArray;
+        
         for(int i = 0; i <= n; i++)
         {
-            for(int j = 0; j <= counter; j++)
+            Vec3f point = controlPoints[i];
+            ptArray.push_back(point);
+        }
+        cps1.push_back(ptArray[0]);
+        cps2.push_back(ptArray.back());
+        for(int i = 0; i < n; i++)
+        {
+            for(int k = 0; k < n - i; k++)
             {
-
-                *(ptArray[i + 1][j]) = (*(ptArray[i][j]) + *(ptArray[i][j + 1])) * t;
+                Vec3f myPoint = ptArray[k + 1] *  t + ptArray[k] *  t;
+                tempArray.push_back(myPoint);
             }
-            counter--;
+            cps1.push_back(tempArray[0]);
+            cps2.insert(cps2.begin(), tempArray.back());
+            ptArray = tempArray;
+            tempArray.clear();
         }
-        for(int i = 0; i <= n; i++)
-        {
-            for(int j = 0; j <= n - 1; j++)
-            {
-                std::cout << "ptArray[" << i << "][" << j << "]: " << *(ptArray[i][j]) << std::endl;
-            }
-        }
-
-        counter = n;
-        for(int i = 0; i <= n; i++)
-        {
-            cps1.push_back(*(ptArray[i][0]));
-            cps2.push_back(*(ptArray[int(counter)][i]));
-            counter--;
-        }
+        
         BezierCurve curve1(cps1, rational);
         BezierCurve curve2(cps2, rational);
         return std::pair<BezierCurve, BezierCurve>(curve1, curve2);
@@ -77,6 +65,14 @@ std::pair<BezierCurve, BezierCurve> BezierCurve::separateCurveAt(const float t)
 Vec3f BezierCurve::evaluateCurveAt(const float t, Vec3f &tangent)
 {
     Vec3f point;
+    BezierCurve differential = calcDifferential();
+    std::pair<BezierCurve, BezierCurve> differentialCurves = differential.separateCurveAt(t);
+    tangent = differentialCurves.second.getControlPoints().front();
+    
+    std::pair<BezierCurve, BezierCurve> curves = separateCurveAt(t);
+    point = curves.second.getControlPoints().front();
+    
+    
     // TODO: implement the evaluation of the bezier curve and the tangent at t.
     // Note: use the seperateCurveAt(t) function.
     // ==========================================================================================================
@@ -84,6 +80,29 @@ Vec3f BezierCurve::evaluateCurveAt(const float t, Vec3f &tangent)
 
     // ==========================================================================================================
     return point;
+}
+
+BezierCurve BezierCurve::calcDifferential()
+{
+    std::vector<Vec3f> ptArray;
+    for(int i = 0; i < controlPoints.size(); i++)
+    {
+        if(i == 0)
+        {
+            ptArray.push_back(controlPoints[1]);
+        }
+        else if (i == controlPoints.size() - 1)
+        {
+            ptArray.push_back(controlPoints[i]);
+        }
+        else
+        {
+            Vec3f point = controlPoints[i + 1] - controlPoints[i];
+            ptArray.push_back(point);
+        }
+    }
+    BezierCurve result(ptArray, rational);
+    return result;
 }
 
 std::pair<std::vector<Vec3f>, std::vector<Vec3f>> BezierCurve::evaluateCurve(const size_t numberSamples)

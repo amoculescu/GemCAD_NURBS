@@ -4,7 +4,7 @@
 #include "iostream"
 #include "CurveRendering.h"
 #include <cmath>
-#include <GL/glut.h>
+#include <GLUT/glut.h>
 #include <BezierCurve.h>
 #include <NURBSCurve.h>
 #include <algorithm>
@@ -87,12 +87,9 @@ void drawBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color)
 {
      glBegin(GL_POINTS);
      glColor3fv(&color.x);
-     auto ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
      for(int i = 0; i < bezierCurve.getControlPoints().size(); i++)
      {
-         Vec3f p = p + *ptrToCtrlPoint;
-         glVertex3fv(&p.x);
-         std::advance(ptrToCtrlPoint, 1);
+         glVertex3fv(&bezierCurve.getControlPoints()[i].x);
      }
      glEnd();
 
@@ -119,15 +116,11 @@ void drawRationalBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color)
 {
 	if (bezierCurve.isRational())
 	{
-        glBegin(GL_LINE_STRIP);
+        glBegin(GL_POINTS);
         glColor3fv(&color.x);
-        auto ptrToCtrlPoint = bezierCurve.getControlPoints().begin();
         for(int i = 0; i < bezierCurve.getControlPoints().size(); i++)
         {
-            Vec3f p = p + *ptrToCtrlPoint;
-            glVertex3fv(&p.x);
-            std::advance(ptrToCtrlPoint, 1);
-
+           glVertex3fv(&bezierCurve.getControlPoints()[i].x);
         }
         glEnd();
     }
