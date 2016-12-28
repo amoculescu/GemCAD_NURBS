@@ -20,10 +20,7 @@ public:
 
     void push(Vec3f ctrlPt);
     
-    BezierCurve calcDifferential();
-
-
-	// evaluate the curve at parameter t with de Casteljau algorithm. Returns both bezier curves seperated at parameter t.
+ 	// evaluate the curve at parameter t with de Casteljau algorithm. Returns both bezier curves seperated at parameter t.
 	std::pair<BezierCurve, BezierCurve> separateCurveAt(const float t);
 
 	// evaluate the curve at parameter t with de Casteljau algorithm. Returns the evaluated point and its tangent at parameter t.

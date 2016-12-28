@@ -3,7 +3,7 @@
 // mailto:felix.schuwirth@igd.fraunhofer.de                                  //
 //                                                                           //
 // GRIS - Graphisch Interaktive Systeme                                      //
-// Technische Universität Darmstadt                                          //
+// Technische Universitï¿½t Darmstadt                                          //
 // Fraunhoferstrasse 5                                                       //
 // D-64283 Darmstadt, Germany                                                //
 //                                                                           //
