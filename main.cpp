@@ -136,11 +136,11 @@ void drawCS()
 
 void fillArray()
 {
-    //creates control points
+    /*//creates control points
     Vec3f point0 = Vec3f(1.0, 1.0, 1.0);
-    Vec3f point1 = Vec3f(2.0, 3.0, 1.0);
-    Vec3f point2 = Vec3f(4.0, 4.0, 1.0);
-    Vec3f point3 = Vec3f(7.0, 1.0, 1.0);
+    Vec3f point1 = Vec3f(2.0, 3.0, 5.0);
+    Vec3f point2 = Vec3f(4.0, 4.0, 3.0);
+    Vec3f point3 = Vec3f(7.0, 1.0, 7.0);
     Vec3f point4 = Vec3f(9.0, 6.0, 1.0);
     Vec3f point5 = Vec3f(13.0, 2.0, 1.0);
 
@@ -148,8 +148,12 @@ void fillArray()
     ctrlPts.push_back(point1);
     ctrlPts.push_back(point2);
     ctrlPts.push_back(point3);
-    ctrlPts.push_back(point4);
-    ctrlPts.push_back(point5);
+    //ctrlPts.push_back(point4);
+    //ctrlPts.push_back(point5);*/
+    for (int u = 0; u < 1; u += 0.1)
+    {
+        ctrlPts.push_back(Vec3f(1-u^2, 2*u, 1+u^2));
+    }
 }
 
 void drawObjects()
@@ -233,7 +237,7 @@ void keyPressed(unsigned char key, int x, int y)
         case 'f' :
         case 'F' :
             fillArray();
-            BezierCurve* myBezier = new BezierCurve(ctrlPts);
+            BezierCurve* myBezier = new BezierCurve(ctrlPts, true);
             bezierCurves.push_back(*myBezier);
             glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
             break;

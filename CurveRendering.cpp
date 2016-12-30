@@ -39,11 +39,16 @@ void drawBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color) {
 
 void drawRationalBezier(BezierCurve &bezierCurve, Vec3f color) {
     if (bezierCurve.isRational()) {
-        // TODO: implement the visualization of the 2D rational bezier curve in the plane w=1 (e.g. with GL_LINE_STRIP)
-        // ===============================================================================
+        float n = bezierCurve.getControlPoints().size() - 1;
+        std::vector<Vec3f> newCtrlPoints;
 
-
-        // ===============================================================================
+        for (int i = 0; i <= n; i++) {
+            Vec3f point = bezierCurve.getControlPoints()[i] / bezierCurve.getControlPoints()[i].z;
+            newCtrlPoints.push_back(point);
+        }
+        BezierCurve* newBezierCurve = new BezierCurve(newCtrlPoints, false);
+        drawBezier(*newBezierCurve, color);
+        renderBezierEvaluation(*newBezierCurve, 0.5);
     }
 }
 
@@ -100,54 +105,56 @@ void renderBezier(BezierCurve &bezierCurve, Vec3f color) {
     auto pointsAndTangents = bezierCurve.evaluateCurve(size_t(100));
     bool rational = bezierCurve.isRational();
     if (bezierCurve.isRational()) {
+        color = Vec3f(1.0f, 0.0f, 1.0f);
         drawRationalBezier(bezierCurve, color);
     }
-    if (rational)
-        color = Vec3f(1.0f, 0.0f, 1.0f);
-    drawBezier(bezierCurve, color);
+    else{
+        drawBezier(bezierCurve, color);
+    }
 }
 
 void renderBezierEvaluation(BezierCurve &bezierCurve, float t) {
-    Vec3f color = {1.0f, 1.0f, 1.0f};
-    if (bezierCurve.getControlPoints().size() > 1) {
-        bool rational = bezierCurve.isRational();
-        auto twoBezierCurves = bezierCurve.separateCurveAt(t);
+    if(!bezierCurve.isRational()) {
+        Vec3f color = {1.0f, 1.0f, 1.0f};
+        if (bezierCurve.getControlPoints().size() > 1) {
+            bool rational = bezierCurve.isRational();
+            auto twoBezierCurves = bezierCurve.separateCurveAt(t);
 
-        glLineWidth(2.0f);
+            glLineWidth(2.0f);
 
-        // first partial curve cps
-        if (rational)color = Vec3f(0.8f, 5.0f, 0.4f);
-        else color = Vec3f(0.8f, 0.0f, 0.4f);
-        drawBezierCtrlPolygon(twoBezierCurves.first, color);
-        // second partial curve cps
-        if (rational)color = Vec3f(0.4f, 5.0f, 0.8f);
-        else color = Vec3f(0.4f, 0.0f, 0.8f);
-        drawBezierCtrlPolygon(twoBezierCurves.second, color);
-
-        glLineWidth(1.0f);
-        // cps of the complete curve
-        if (rational)color = Vec3f(0.3f, 0.2f, 0.7f);
-        else color = Vec3f(0.3f, 0.7f, 0.7f);
-        drawBezierCtrlPolygon(bezierCurve, color);
-
-        glLineWidth(2.0f);
-        if (bezierCurve.isRational()) {
-
-            auto twoBezierCurves2 = bezierCurve.separateCurveAt(t);
             // first partial curve cps
-            color = Vec3f(0.8f, 0.0f, 0.4f);
-            drawRationalBezierCtrlPolygon(twoBezierCurves2.first, color);
+            if (rational)color = Vec3f(0.8f, 5.0f, 0.4f);
+            else color = Vec3f(0.8f, 0.0f, 0.4f);
+            drawBezierCtrlPolygon(twoBezierCurves.first, color);
             // second partial curve cps
-            color = Vec3f(0.4f, 0.0f, 0.8f);
-            drawRationalBezierCtrlPolygon(twoBezierCurves2.second, color);
+            if (rational)color = Vec3f(0.4f, 5.0f, 0.8f);
+            else color = Vec3f(0.4f, 0.0f, 0.8f);
+            drawBezierCtrlPolygon(twoBezierCurves.second, color);
+
             glLineWidth(1.0f);
             // cps of the complete curve
-            color = Vec3f(0.3f, 0.7f, 0.7f);
-            drawRationalBezierCtrlPolygon(bezierCurve, color);
+            if (rational)color = Vec3f(0.3f, 0.2f, 0.7f);
+            else color = Vec3f(0.3f, 0.7f, 0.7f);
+            drawBezierCtrlPolygon(bezierCurve, color);
 
+            glLineWidth(2.0f);
+            if (bezierCurve.isRational()) {
+
+                auto twoBezierCurves2 = bezierCurve.separateCurveAt(t);
+                // first partial curve cps
+                color = Vec3f(0.8f, 0.0f, 0.4f);
+                drawRationalBezierCtrlPolygon(twoBezierCurves2.first, color);
+                // second partial curve cps
+                color = Vec3f(0.4f, 0.0f, 0.8f);
+                drawRationalBezierCtrlPolygon(twoBezierCurves2.second, color);
+                glLineWidth(1.0f);
+                // cps of the complete curve
+                color = Vec3f(0.3f, 0.7f, 0.7f);
+                drawRationalBezierCtrlPolygon(bezierCurve, color);
+
+            }
         }
     }
-
 }
 
 void renderNURBS(NURBSCurve &nurbsCurve) {
