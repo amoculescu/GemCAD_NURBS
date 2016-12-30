@@ -3,7 +3,7 @@
 // mailto:felix.schuwirth@igd.fraunhofer.de                                  //
 //                                                                           //
 // GRIS - Graphisch Interaktive Systeme                                      //
-// Technische Universitï¿½t Darmstadt                                          //
+// Technische Universität Darmstadt                                          //
 // Fraunhoferstrasse 5                                                       //
 // D-64283 Darmstadt, Germany                                                //
 //                                                                           //
@@ -12,7 +12,7 @@
 //   * basic navigation and basic pipeline rendering                         //
 // ========================================================================= //
 
-#include <GLUT/glut.h>	// openGL helper
+#include <GL/glut.h>	// openGL helper
 
 #include "Vec4.h"
 #include "BezierCurve.h"

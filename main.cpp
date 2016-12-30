@@ -62,7 +62,7 @@ void setDefaults()
     mouseY = 0;
     mouseButton = 0;
     mouseSensitivy = 1.0f;
-    evalParameter = 0.6f;
+    evalParameter = 0.5f;
 }
 
 void initializeGL()
@@ -136,20 +136,27 @@ void drawCS()
 
 void fillArray()
 {
-    //creates control points
-    Vec3f point0 = Vec3f(1.0, 1.0, 1.0);
-    Vec3f point1 = Vec3f(2.0, 3.0, 1.0);
-    Vec3f point2 = Vec3f(4.0, 4.0, 1.0);
-    Vec3f point3 = Vec3f(7.0, 1.0, 1.0);
-    Vec3f point4 = Vec3f(9.0, 6.0, 1.0);
-    Vec3f point5 = Vec3f(13.0, 2.0, 1.0);
+    for(int i = 0; i < numberPoints; i++)
+    {
+        float grow = pow(i, 2) * 0.1;
+        ctrlPts.push_back(Vec3f(i , grow, grow));
+    }
+}
 
-    ctrlPts.push_back(point0);
-    ctrlPts.push_back(point1);
-    ctrlPts.push_back(point2);
-    ctrlPts.push_back(point3);
-    ctrlPts.push_back(point4);
-    ctrlPts.push_back(point5);
+void drawKreis()
+{
+	for (int u = 0; u < 1; u=u+0.1)
+	{
+		ctrlPts.push_back(Vec3f(1-u^2, 2*u, 1+u^2));
+	}
+}
+
+void drawHyperbel()
+{
+	for (int j = 0; j < 1; j=j+0.1)
+	{
+		ctrlPts.push_back(Vec3f(-1+2*j, 4*j*(1-j), 1+2*j-2*j^2));
+	}
 }
 
 void drawObjects()
@@ -159,12 +166,12 @@ void drawObjects()
     for(unsigned int i = 0; i < bezierCurves.size(); i++)
     {
         renderBezier(bezierCurves[i], curveColor);
+        drawBezierCtrlPolygon(bezierCurves[i], ctrlPolygonCol);
         curveColor = curveColor +  Vec3f(0.0f, 0.3f, 0.3f);
         ctrlPolygonCol = ctrlPolygonCol + Vec3f(0.0f, 0.5f, 0.0f);
-        if(i == activeBezier)
-        {
-            renderBezierEvaluation(bezierCurves[i], evalParameter);
-        }
+        //renderBezierEvaluation(bezierCurves[0], 0.5);
+        //if(i == activeBezier)
+        //    renderBezierEvaluation(bezierCurves[i], evalParameter);
     }
     for(unsigned int i = 0; i < nurbsCurves.size(); ++i)
     {
@@ -216,19 +223,17 @@ void keyPressed(unsigned char key, int x, int y)
             setDefaults();
             glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
             break;
-        case '+' :
-            if(evalParameter < 1.0)
-            {
-                evalParameter += 0.01 ;
-                glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
-            }
+		case 'k' :
+		case 'K' :
+			drawKreis();
+			BezierCurve* kreisBezier = new BezierCurve(ctrlPts, true);
+			bezierCurves.push_back(*kreisBezier);
+			glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
             break;
-        case '-' :
-            if(evalParameter > 0)
-            {
-                evalParameter -= 0.01;
-                glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
-            }
+        case 's':
+        case 'S':
+            separateLast();
+            glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
             break;
         case 'f' :
         case 'F' :
@@ -237,6 +242,7 @@ void keyPressed(unsigned char key, int x, int y)
             bezierCurves.push_back(*myBezier);
             glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
             break;
+		
     // TODO: place custom functions on button evyents here to present your results
     // like changing the active Bbezier/NURBS curve (activeNURBS, activeBezier)
     // and varying the evaluation parameter (evalParameter) for the bezier curve
@@ -301,9 +307,6 @@ void coutHelp()
     std::cout << "ESC: exit" << std::endl;
     std::cout << "H: show this (H)elp file" << std::endl;
     std::cout << "R: (R)eset view" << std::endl;
-    std::cout << "F: create control points" << std::endl;
-    std::cout << "'+': add 0.01 to evalParameter" << std::endl;
-    std::cout << "'-': subtract 0.01 from evalParameter" << std::endl;
     // TODO: update help text according to your changes
     // ================================================
 
