@@ -61,6 +61,7 @@ void setDefaults()
     mouseX = 0;
     mouseY = 0;
     mouseButton = 0;
+    activeBezier = 0;
     mouseSensitivy = 1.0f;
     evalParameter = 0.6f;
 }
@@ -136,24 +137,30 @@ void drawCS()
 
 void fillArray()
 {
-    /*//creates control points
-    Vec3f point0 = Vec3f(1.0, 1.0, 1.0);
-    Vec3f point1 = Vec3f(2.0, 3.0, 5.0);
-    Vec3f point2 = Vec3f(4.0, 4.0, 3.0);
-    Vec3f point3 = Vec3f(7.0, 1.0, 7.0);
-    Vec3f point4 = Vec3f(9.0, 6.0, 1.0);
-    Vec3f point5 = Vec3f(13.0, 2.0, 1.0);
+    //creates control points
+    Vec3f point0 = Vec3f(1.0, 0.0, 1.0);
+    Vec3f point1 = Vec3f(1.0, 1.0, 1.0);
+    Vec3f point2 = Vec3f(0.0, 2.0, 2.0);
+    Vec3f point3 = Vec3f(-1.0, 1.0, 1.0);
+    Vec3f point4 = Vec3f(-1.0, 0.0, 1.0);
+    Vec3f point5 = Vec3f(-1.0, -1.0, 1.0);
+    Vec3f point6 = Vec3f(0.0, -2.0, 2.0);
+    Vec3f point7 = Vec3f(1.0, -1.0, 1.0);
+    Vec3f point8 = Vec3f(1.0, 0.0, 1.0);
 
     ctrlPts.push_back(point0);
     ctrlPts.push_back(point1);
     ctrlPts.push_back(point2);
     ctrlPts.push_back(point3);
-    //ctrlPts.push_back(point4);
-    //ctrlPts.push_back(point5);*/
-    for (int u = 0; u < 1; u += 0.1)
+    ctrlPts.push_back(point4);
+    ctrlPts.push_back(point5);
+    ctrlPts.push_back(point6);
+    ctrlPts.push_back(point7);
+    ctrlPts.push_back(point8);
+    /*for (float u = 0.0; u < 1; u += 0.5f)
     {
-        ctrlPts.push_back(Vec3f(1-u^2, 2*u, 1+u^2));
-    }
+        ctrlPts.push_back(Vec3f(1 - pow(u, 2), 2 * u, 1 + pow(u, 2)));
+    }*/
 }
 
 void drawObjects()
@@ -220,6 +227,17 @@ void keyPressed(unsigned char key, int x, int y)
             setDefaults();
             glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
             break;
+        case 'a' :
+        case 'A' :
+            if(activeBezier <= bezierCurves.size() - 1)
+            {
+                activeBezier += 1;
+            }
+            else {
+                activeBezier = 0;
+            }
+            std::cout <<"bezierCurves:" << bezierCurves.size() << " activeBezier: " << activeBezier << std::endl;
+            glutPostRedisplay();
         case '+' :
             if(evalParameter < 1.0)
             {
@@ -235,12 +253,13 @@ void keyPressed(unsigned char key, int x, int y)
             }
             break;
         case 'f' :
-        case 'F' :
+        case 'F' : {
             fillArray();
-            BezierCurve* myBezier = new BezierCurve(ctrlPts, true);
+            BezierCurve *myBezier = new BezierCurve(ctrlPts, true);
             bezierCurves.push_back(*myBezier);
-            glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
+            glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
             break;
+        }
     // TODO: place custom functions on button evyents here to present your results
     // like changing the active Bbezier/NURBS curve (activeNURBS, activeBezier)
     // and varying the evaluation parameter (evalParameter) for the bezier curve
