@@ -53,6 +53,30 @@ bool NURBSCurve::insertKnot(const float newKnot)
 	// TODO: implement knot insertion with de boor algorithm
 	// =====================================================
 
+    if (newKnot <= knotVector[0] || newKnot >= knotVector[knotVector.size() - 1])
+    {
+        return false;
+    }
+    else
+    {
+        for (unsigned int i = 1; i < knotVector.size(); i++)
+        {
+            if (newKnot <= knotVector[i] && newKnot >= knotVector[i + 1])
+            {
+                for (int h = i + 1; h < controlPoints.size(); h++)
+                {
+                    controlPoints[h + 1] = controlPoints[h];
+                }
+                for (int j = i - degree + 1; j <= i; j++)
+                {
+                    float alpha = (newKnot - knotVector[j]) / (knotVector[j + degree] - knotVector[j]);
+                    controlPoints[j] = alpha*controlPoints[j] + (1 - alpha)*controlPoints[j - 1];
+                }
+                knotVector.insert(knotVector.begin() + i + 1, newKnot);
+                return true;
+            }
+        }
+    }
 
 	// =====================================================
 	return true;
