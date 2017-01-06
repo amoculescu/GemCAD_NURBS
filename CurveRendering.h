@@ -3,14 +3,14 @@
 // mailto:felix.schuwirth@igd.fraunhofer.de                                  //
 //                                                                           //
 // GRIS - Graphisch Interaktive Systeme                                      //
-// Technische Universität Darmstadt                                          //
+// Technische Universitï¿½t Darmstadt                                          //
 // Fraunhoferstrasse 5                                                       //
 // D-64283 Darmstadt, Germany                                                //
 // ========================================================================= //
 
 #ifndef CURVE_RENDERING_H
 #define CURVE_RENDERING_H
-#include <Vec3.h>
+#include "Vec3.h"
 
 class BezierCurve;
 class NURBSCurve;

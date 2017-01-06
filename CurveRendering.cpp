@@ -4,9 +4,9 @@
 #include "iostream"
 #include "CurveRendering.h"
 #include <cmath>
-#include <GLUT/glut.h>
-#include <BezierCurve.h>
-#include <NURBSCurve.h>
+#include <GL/glut.h>
+#include "BezierCurve.h"
+#include "NURBSCurve.h"
 #include <algorithm>
 
 #define numberOfPoints 100
@@ -102,20 +102,24 @@ void drawNURBSCtrlPolygon_H(const NURBSCurve &nurbsCurve, Vec3f color) {
     // =========================================================================================================
 }
 
-void renderBezier(BezierCurve &bezierCurve, Vec3f color) {
+/*void renderBezier(BezierCurve &bezierCurve, Vec3f myColor)
+{
     auto pointsAndTangents = bezierCurve.evaluateCurve(size_t(100));
-    if (bezierCurve.isRational()) {
-        color = Vec3f(1.0f, 0.0f, 1.0f);
+    bool rational = bezierCurve.isRational();
+    Vec3f color = Vec3f(0.0f, 1.0f, 1.0f);
+    if (bezierCurve.isRational())
+    {
         drawRationalBezier(bezierCurve, color);
     }
-    else{
-        drawBezier(bezierCurve, color);
-    }
+    if (rational)
+        color = Vec3f(1.0f, 0.0f, 1.0f);
+    drawBezier(bezierCurve, color);
 }
-
-void renderBezierEvaluation(BezierCurve &bezierCurve, float t) {
-    Vec3f color = {1.0f, 1.0f, 1.0f};
-    if (bezierCurve.getControlPoints().size() > 1) {
+void renderBezierEvaluation(BezierCurve &bezierCurve, float t)
+{
+    Vec3f color = { 1.0f,1.0f,1.0f };
+    if (bezierCurve.getControlPoints().size() > 1)
+    {
         bool rational = bezierCurve.isRational();
         auto twoBezierCurves = bezierCurve.separateCurveAt(t);
 
@@ -123,21 +127,22 @@ void renderBezierEvaluation(BezierCurve &bezierCurve, float t) {
 
         // first partial curve cps
         if (rational)color = Vec3f(0.8f, 5.0f, 0.4f);
-        else color = Vec3f(0.8f, 0.0f, 0.4f);
+        else		color = Vec3f(0.8f, 0.0f, 0.4f);
         drawBezierCtrlPolygon(twoBezierCurves.first, color);
         // second partial curve cps
         if (rational)color = Vec3f(0.4f, 5.0f, 0.8f);
-        else color = Vec3f(0.4f, 0.0f, 0.8f);
+        else		color = Vec3f(0.4f, 0.0f, 0.8f);
         drawBezierCtrlPolygon(twoBezierCurves.second, color);
 
         glLineWidth(1.0f);
         // cps of the complete curve
         if (rational)color = Vec3f(0.3f, 0.2f, 0.7f);
-        else color = Vec3f(0.3f, 0.7f, 0.7f);
+        else		color = Vec3f(0.3f, 0.7f, 0.7f);
         drawBezierCtrlPolygon(bezierCurve, color);
 
         glLineWidth(2.0f);
-        if (bezierCurve.isRational()) {
+        if (bezierCurve.isRational())
+        {
 
             auto twoBezierCurves2 = bezierCurve.separateCurveAt(t);
             // first partial curve cps
@@ -151,6 +156,59 @@ void renderBezierEvaluation(BezierCurve &bezierCurve, float t) {
             color = Vec3f(0.3f, 0.7f, 0.7f);
             drawRationalBezierCtrlPolygon(bezierCurve, color);
 
+        }
+    }
+}*/
+
+void renderBezier(BezierCurve &bezierCurve, Vec3f color) {
+    auto pointsAndTangents = bezierCurve.evaluateCurve(size_t(100));
+    if (bezierCurve.isRational()) {
+        color = Vec3f(1.0f, 0.0f, 1.0f);
+        drawRationalBezier(bezierCurve, color);
+    }
+    else
+    {
+        drawBezier(bezierCurve, color);
+    }
+}
+
+void renderBezierEvaluation(BezierCurve &bezierCurve, float t) {
+    Vec3f color = {1.0f, 1.0f, 1.0f};
+    if (bezierCurve.getControlPoints().size() > 1)
+    {
+        bool rational = bezierCurve.isRational();
+        auto twoBezierCurves = bezierCurve.separateCurveAt(t);
+
+        glLineWidth(2.0f);
+        if (rational)
+        {
+            // first partial curve cps
+            color = Vec3f(0.8f, 5.0f, 0.4f);
+            drawRationalBezierCtrlPolygon(twoBezierCurves.first, color);
+            // second partial curve cps
+            color = Vec3f(0.4f, 5.0f, 0.8f);
+            drawRationalBezierCtrlPolygon(twoBezierCurves.second, color);
+
+        }
+        else
+        {
+            // first partial curve cps
+            color = Vec3f(0.8f, 0.0f, 0.4f);
+            drawBezierCtrlPolygon(twoBezierCurves.first, color);
+            // second partial curve cps
+            color = Vec3f(0.4f, 0.0f, 0.8f);
+            drawBezierCtrlPolygon(twoBezierCurves.second, color);
+
+        }// cps of the complete curve
+        if (rational)
+        {
+            color = Vec3f(0.3f, 0.2f, 0.7f);
+            drawRationalBezierCtrlPolygon(bezierCurve, color);
+        }
+        else
+        {
+            color = Vec3f(0.3f, 0.7f, 0.7f);
+            drawBezierCtrlPolygon(bezierCurve, color);
         }
     }
 }

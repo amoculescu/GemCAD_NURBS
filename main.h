@@ -12,7 +12,7 @@
 //   * basic navigation and basic pipeline rendering                         //
 // ========================================================================= //
 
-#include <GLUT/glut.h>	// openGL helper
+#include <GL/glut.h>	// openGL helper
 
 #include "Vec4.h"
 #include "BezierCurve.h"

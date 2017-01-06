@@ -9,6 +9,12 @@ NURBSCurve::NURBSCurve()
 	isValidNURBS();
 }
 
+/*
+ * p == grad der kurve; mindestens 2
+ * P == Kontrollpunkte; mindestens so viele wie der grad der kurve
+ * U == Knotenvektor; anzahl == p + P
+ */
+
 // constructor which takes given control points P, knot vector U and degree p
 NURBSCurve::NURBSCurve(const std::vector<Vec4f>& controlPoints_, const std::vector<float>& knotVector_, const unsigned int degree_)
 	: controlPoints(controlPoints_)
@@ -22,11 +28,14 @@ bool NURBSCurve::isValidNURBS()
 {
 	// knot vector verification
 	bool validU = true;
-	for (unsigned int i = 1; i < knotVector.size() && validU == true; i++) if (knotVector[i] < knotVector[i-1])
-	{
-		std::cout << "INVALID (unsorted) knotVector.\n";
-		validU = false;
-		break;
+	for (unsigned int i = 1; i < knotVector.size() && validU == true; i++)
+    {
+        if (knotVector[i] < knotVector[i-1])
+	    {
+		   std::cout << "INVALID (unsorted) knotVector.\n";
+		   validU = false;
+		   break;
+		}
 	}
 	// size verification
 	bool validSize = true;
@@ -57,8 +66,7 @@ Vec4f NURBSCurve::evaluteDeBoor(const float t, Vec4f& tangent)
 	// TODO: use insertKnot to evaluate the curve and its tangent. Take care to NOT modify this NURBS curve. Instead use the temporary copy.
 	// =====================================================================================================================================
 
-
-	// =====================================================================================================================================
+ 	// =====================================================================================================================================
 	return point;
 }
 

@@ -3,7 +3,7 @@
 // mailto:felix.schuwirth@igd.fraunhofer.de                                  //
 //                                                                           //
 // GRIS - Graphisch Interaktive Systeme                                      //
-// Technische Universität Darmstadt                                          //
+// Technische Universitï¿½t Darmstadt                                          //
 // Fraunhoferstrasse 5                                                       //
 // D-64283 Darmstadt, Germany                                                //
 //                                                                           //
@@ -17,9 +17,9 @@
 #include <cmath>		// fmod
 #include <stdio.h>		// cout
 #include <iostream>		// cout
-#include <CurveRendering.h>
+#include "CurveRendering.h"
 
-#define numberPoints 10
+#define numberPoints 100
 // ==============
 // === BASICS ===
 // ==============
@@ -138,6 +138,15 @@ void drawCS()
 void fillArray()
 {
     //creates control points
+
+    //random points
+
+    /*Vec3f point0 = Vec3f(1.0, 1.0, 1.0);
+    Vec3f point1 = Vec3f(4.0, 6.0, 2.0);
+    Vec3f point2 = Vec3f(7.0, 9.0, 10.0);
+    Vec3f point3 = Vec3f(10.0, 2.0, -4.0);*/
+
+    //circle
     Vec3f point0 = Vec3f(1.0, 0.0, 1.0);
     Vec3f point1 = Vec3f(1.0, 1.0, 1.0);
     Vec3f point2 = Vec3f(0.0, 2.0, 2.0);
@@ -157,10 +166,6 @@ void fillArray()
     ctrlPts.push_back(point6);
     ctrlPts.push_back(point7);
     ctrlPts.push_back(point8);
-    /*for (float u = 0.0; u < 1; u += 0.5f)
-    {
-        ctrlPts.push_back(Vec3f(1 - pow(u, 2), 2 * u, 1 + pow(u, 2)));
-    }*/
 }
 
 void drawObjects()
@@ -246,7 +251,7 @@ void keyPressed(unsigned char key, int x, int y)
             }
             break;
         case '-' :
-            if(evalParameter > 0)
+            if(evalParameter > 0.0)
             {
                 evalParameter -= 0.01;
                 glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
@@ -286,7 +291,7 @@ void mousePressed(int button, int state, int x, int y)
 
 void mouseMoved(int x, int y)
 {
-    // rotate (cap angleY within [-85°, +85°])
+    // rotate (cap angleY within [-85ï¿½, +85ï¿½])
     if(mouseButton == GLUT_LEFT_BUTTON)
     {
         angleX = fmod(angleX + (x - mouseX) * mouseSensitivy, 360.0f);

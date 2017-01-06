@@ -18,38 +18,79 @@ void BezierCurve::push(Vec3f ctrlPt) {
 
 // splits the bezier curve into two at u=t
 std::pair<BezierCurve, BezierCurve> BezierCurve::separateCurveAt(const float t) {
-    int n = controlPoints.size() - 1; //grade ov curve
-    std::vector<Vec3f> cps1, cps2;
-    std::vector<Vec3f> tempVector;
-    //put every control point of curve into tempVector
-    for (int i = 0; i <= n; i++) {
-        tempVector.push_back(controlPoints[i]);
-    }
-    /*
-     *first point of original curve == first point of first curve,
-     * last point of original curve == last point of second curve
-     */
-    cps1.push_back(controlPoints[0]);
-    cps2.push_back(controlPoints[controlPoints.size() - 1]);
-
-    //split every segment at t, create new points and push to respective curve
-    for (int i = 0; i < n; i++) {
-        //only add second "parent" if new point isn't last or second to last
-        if (tempVector.size() > 2)
+    int n = controlPoints.size() - 1; //grade of curve
+    std::vector<Vec3f> cps1, cps2, tempVector;
+    if(rational == true)
+    {
+        //put every control point of curve into tempVector
+        for (int i = 0; i <= n; i++)
         {
-            cps1.push_back(tempVector[1]);
-            cps2.push_back(tempVector[tempVector.size() - 2]);
+            tempVector.push_back(controlPoints[i] / controlPoints[i].z);
         }
-        //split curve at t
-        for (int k = 0; k < n - i; k++) {
-            tempVector[k] = (1 - t) * tempVector[k] + tempVector[k + 1] * t;
-        }
-        //first point calculated == next point of first curve
+        /*
+         *first point of original curve == first point of first curve,
+         * last point of original curve == last point of second curve
+         */
         cps1.push_back(tempVector[0]);
-        //remove last point (not needed anymore)
-        tempVector.pop_back();
-        //last point calculated == last point of second curve
         cps2.push_back(tempVector[tempVector.size() - 1]);
+
+        //split every segment at t, create new points and push to respective curve
+        for (int i = 0; i < n; i++)
+        {
+            //only add second "parent" if new point isn't last or second to last
+            if (tempVector.size() > 2)
+            {
+                cps1.push_back(tempVector[1]);
+                cps2.push_back(tempVector[tempVector.size() - 2]);
+            }
+            //split curve at t
+            for (int k = 0; k < n - i; k++)
+            {
+                tempVector[k] = (1 - t) * tempVector[k] + tempVector[k + 1] * t;
+            }
+            //first point calculated == next point of first curve
+            cps1.push_back(tempVector[0]);
+            //remove last point (not needed anymore)
+            tempVector.pop_back();
+            //last point calculated == last point of second curve
+            cps2.push_back(tempVector[tempVector.size() - 1]);
+        }
+    }
+    else
+    {
+        //put every control point of curve into tempVector
+        for (int i = 0; i <= n; i++)
+        {
+            tempVector.push_back(controlPoints[i]);
+        }
+        /*
+         *first point of original curve == first point of first curve,
+         * last point of original curve == last point of second curve
+         */
+        cps1.push_back(tempVector[0]);
+        cps2.push_back(tempVector[tempVector.size() - 1]);
+
+        //split every segment at t, create new points and push to respective curve
+        for (int i = 0; i < n; i++)
+        {
+            //only add second "parent" if new point isn't last or second to last
+            if (tempVector.size() > 2)
+            {
+                cps1.push_back(tempVector[1]);
+                cps2.push_back(tempVector[tempVector.size() - 2]);
+            }
+            //split curve at t
+            for (int k = 0; k < n - i; k++)
+            {
+                tempVector[k] = (1 - t) * tempVector[k] + tempVector[k + 1] * t;
+            }
+            //first point calculated == next point of first curve
+            cps1.push_back(tempVector[0]);
+            //remove last point (not needed anymore)
+            tempVector.pop_back();
+            //last point calculated == last point of second curve
+            cps2.push_back(tempVector[tempVector.size() - 1]);
+        }
     }
     //reverse control point order of curve 2
     std::reverse(cps2.begin(), cps2.end());
