@@ -87,7 +87,7 @@ Vec4f NURBSCurve::evaluteDeBoor(const float t, Vec4f& tangent)
 	// create a copy of this NURBS curve
 	NURBSCurve tempNURBS(*this);
 	Vec4f point;
-	int multiplizität = 0;
+	int s = 0; //multiplizitaet
 	int k = 0;
 	// TODO: use insertKnot to evaluate the curve and its tangent. Take care to NOT modify this NURBS curve. Instead use the temporary copy.
 	// =====================================================================================================================================
@@ -95,15 +95,19 @@ Vec4f NURBSCurve::evaluteDeBoor(const float t, Vec4f& tangent)
 	{
 		if (tempNURBS.knotVector[i] == t)
 		{
-			multiplizität++;
+			s++;
 		}
 		if (tempNURBS.knotVector[i] < t)
 		{
 			k++;
 		}
 	}
-	for (multiplizität; multiplizität <= tempNURBS.degree; multiplizität++)
+	for (s; s <= tempNURBS.degree; s++)
 	{
+		if (s == tempNURBS.degree - 1)
+		{
+			tangent = tempNURBS.controlPoints[k] - tempNURBS.controlPoints[k - 1];
+		}
 		insertKnot(t);
 	}
 	point = tempNURBS.controlPoints[k];
@@ -122,6 +126,18 @@ std::pair<std::vector<Vec4f>, std::vector<Vec4f>> NURBSCurve::evaluateCurve(cons
 	// TODO: implement evaluation of the NURBS curve at 'numberSamples' equidistant points
 	// Note: use the evaluteDeBoor(t) function. 
 	// ==========================================================================================================
+	
+	//calculate interval
+	float t = 1.0f / numberSamples;
+
+	//gets points every t
+	for (float i = 0.0; i <= 1.0; i += t) {
+		//create empty tangent
+		Vec4f *aTangent = new Vec4f();
+		tangents.push_back(*aTangent);
+		Vec4f point = evaluteDeBoor(i, tangents[i]);
+		points.push_back(point);
+	}
 
 
 	// ==========================================================================================================

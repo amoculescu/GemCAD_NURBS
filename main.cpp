@@ -25,6 +25,7 @@
 // ==============
 
 std::vector<Vec3f> ctrlPts;
+std::vector<Vec4f> ctrlPtsNurbs;
 
 int main(int argc, char** argv)
 {
@@ -168,6 +169,18 @@ void fillArray()
     ctrlPts.push_back(point8);
 }
 
+void fillArrayNurbs()
+{
+	Vec4f point0 = Vec4f(1.0, 0.0, 0.0, 1.0);
+	Vec4f point1 = Vec4f(1.0, 1.0, 0.0, 1.0);
+	Vec4f point2 = Vec4f(1.0, 1.0, 1.0, 1.0);
+	Vec4f point3 = Vec4f(2.0, 1.0, 1.0, 1.0);
+	Vec4f point4 = Vec4f(2.0, 2.0, 1.0, 1.0);
+	Vec4f point5 = Vec4f(2.0, 2.0, 2.0, 1.0);
+	
+
+}
+
 void drawObjects()
 {
     Vec3f curveColor = Vec3f(0.1f, 0.1f, 0.1f);
@@ -243,6 +256,7 @@ void keyPressed(unsigned char key, int x, int y)
             }
             std::cout <<"bezierCurves:" << bezierCurves.size() << " activeBezier: " << activeBezier << std::endl;
             glutPostRedisplay();
+			break;
         case '+' :
             if(evalParameter < 1.0)
             {
@@ -265,6 +279,14 @@ void keyPressed(unsigned char key, int x, int y)
             glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
             break;
         }
+		case 'n':
+		case 'N': {
+			fillArrayNurbs();
+			NURBSCurve *myNURBS = new NURBSCurve();
+			nurbsCurves.push_back(*myNURBS);
+			glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
+			break;
+		}
     // TODO: place custom functions on button evyents here to present your results
     // like changing the active Bbezier/NURBS curve (activeNURBS, activeBezier)
     // and varying the evaluation parameter (evalParameter) for the bezier curve
