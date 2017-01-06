@@ -2,6 +2,7 @@
 
 #include <stdio.h>		// cout
 #include <iostream>		// cout
+#include <algorithm>	// reverse
 
 
 BezierCurve::BezierCurve(bool isRational_)
