@@ -40,8 +40,8 @@ std::pair<BezierCurve, BezierCurve> BezierCurve::separateCurveAt(const float t) 
             //only add second "parent" if new point isn't last or second to last
             if (tempVector.size() > 2)
             {
-                cps1.push_back(tempVector[1]);
-                cps2.push_back(tempVector[tempVector.size() - 2]);
+                //cps1.push_back(tempVector[1]);
+                //cps2.push_back(tempVector[tempVector.size() - 2]);
             }
             //split curve at t
             for (int k = 0; k < n - i; k++)
