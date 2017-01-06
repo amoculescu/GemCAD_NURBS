@@ -25,6 +25,8 @@
 // ==============
 
 std::vector<Vec3f> ctrlPts;
+std::vector<Vec4f> ctrlPtsNurbs;
+std::vector<float> knotVector;
 
 int main(int argc, char** argv)
 {
@@ -168,6 +170,43 @@ void fillArray()
     ctrlPts.push_back(point8);
 }
 
+void fillArrayNurbs()
+{
+	Vec4f point0 = Vec4f(1.0, 0.0, 0.0, 1.0);
+	Vec4f point1 = Vec4f(1.0, 1.0, 0.0, 1.0);
+	Vec4f point2 = Vec4f(1.0, 1.0, 1.0, 1.0);
+	Vec4f point3 = Vec4f(2.0, 1.0, 1.0, 1.0);
+	Vec4f point4 = Vec4f(2.0, 2.0, 1.0, 1.0);
+	Vec4f point5 = Vec4f(2.0, 2.0, 2.0, 1.0);
+	
+	ctrlPtsNurbs.push_back(point0);
+	ctrlPtsNurbs.push_back(point1);
+	ctrlPtsNurbs.push_back(point2);
+	ctrlPtsNurbs.push_back(point3);
+	ctrlPtsNurbs.push_back(point4);
+	ctrlPtsNurbs.push_back(point5);
+
+	float knot0 = 0;
+	float knot1 = 0;
+	float knot2 = 0;
+	float knot3 = 0.25;
+	float knot4 = 0.5;
+	float knot5 = 0.75;
+	float knot6 = 1;
+	float knot7 = 1;
+	float knot8 = 1;
+
+	knotVector.push_back(knot0);
+	knotVector.push_back(knot1);
+	knotVector.push_back(knot2);
+	knotVector.push_back(knot3);
+	knotVector.push_back(knot4);
+	knotVector.push_back(knot5);
+	knotVector.push_back(knot6);
+	knotVector.push_back(knot7);
+	knotVector.push_back(knot8);
+}
+
 void drawObjects()
 {
     Vec3f curveColor = Vec3f(0.1f, 0.1f, 0.1f);
@@ -243,6 +282,7 @@ void keyPressed(unsigned char key, int x, int y)
             }
             std::cout <<"bezierCurves:" << bezierCurves.size() << " activeBezier: " << activeBezier << std::endl;
             glutPostRedisplay();
+			break;
         case '+' :
             if(evalParameter < 1.0)
             {
@@ -265,6 +305,14 @@ void keyPressed(unsigned char key, int x, int y)
             glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
             break;
         }
+		case 'n':
+		case 'N': {
+			fillArrayNurbs();
+			NURBSCurve *myNURBS = new NURBSCurve(ctrlPtsNurbs, knotVector, /*knotVektor.size() - ctrlPts.size() - 1*/ 2);
+			nurbsCurves.push_back(*myNURBS);
+			glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
+			break;
+		}
     // TODO: place custom functions on button evyents here to present your results
     // like changing the active Bbezier/NURBS curve (activeNURBS, activeBezier)
     // and varying the evaluation parameter (evalParameter) for the bezier curve
