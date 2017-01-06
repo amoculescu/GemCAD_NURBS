@@ -23,7 +23,6 @@ void drawBezier(BezierCurve &bezierCurve, Vec3f color) {
         glVertex3fv(&myPoint.x);
         counter++;
     }
-    glVertex3fv(&bezierCurve.getControlPoints()[bezierCurve.getControlPoints().size() - 1].x);
     glEnd();
 }
 
@@ -75,7 +74,6 @@ void drawNURBS(NURBSCurve &nurbsCurve, Vec3f color) {
     {
         glVertex3f(pointVector[i].x, pointVector[i].y, pointVector[i].z);
     }
-    glVertex3fv(&bezierCurve.getControlPoints()[bezierCurve.getControlPoints().size() - 1].x);
     glEnd();
     // ===================================================================================
 }
