@@ -172,12 +172,12 @@ void fillArray()
 
 void fillArrayNurbs()
 {
-	Vec4f point0 = Vec4f(1.0, 0.0, 0.0, 1.0);
-	Vec4f point1 = Vec4f(1.0, 1.0, 0.0, 1.0);
-	Vec4f point2 = Vec4f(1.0, 1.0, 1.0, 1.0);
-	Vec4f point3 = Vec4f(2.0, 1.0, 1.0, 1.0);
-	Vec4f point4 = Vec4f(2.0, 2.0, 1.0, 1.0);
-	Vec4f point5 = Vec4f(2.0, 2.0, 2.0, 1.0);
+	Vec4f point0 = Vec4f(1.0, 1.0, 1.0, 1.0);
+	Vec4f point1 = Vec4f(2.0, 4.0, 1.0, 2.0);
+	Vec4f point2 = Vec4f(3.0, 9.0, 1.0, 3.0);
+	Vec4f point3 = Vec4f(4.0, 5.0, 1.0, 2.0);
+	Vec4f point4 = Vec4f(5.0, 10.0, 1.0, 2.0);
+	Vec4f point5 = Vec4f(6.0, 1.0, 1.0, 1.0);
 	
 	ctrlPtsNurbs.push_back(point0);
 	ctrlPtsNurbs.push_back(point1);

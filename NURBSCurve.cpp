@@ -32,15 +32,17 @@ bool NURBSCurve::isValidNURBS()
     {
         if (knotVector[i] < knotVector[i-1])
 	    {
-		   std::cout << "INVALID (unsorted) knotVector.\n";
-		   validU = false;
-		   break;
+            std::cout << "i: " << i <<" knotvector[i]: " << knotVector[i] << " knotvector[i-1] " << knotVector[i-1] << std::endl;
+		    std::cout << "INVALID (unsorted) knotVector.\n";
+		    validU = false;
+		    break;
 		}
 	}
 	// size verification
 	bool validSize = true;
 	if (controlPoints.size() + degree + 1 != knotVector.size()) 
 	{
+        std::cout << "controlPoints.size: " << controlPoints.size() << " degree " << degree << " knotVector.size " << knotVector.size() << std::endl;
 		std::cout << "INVALID sizes (controlPoints.size() + degree + 1 != knotVector.size()).\n";
 		validSize = false;
 	}
@@ -61,17 +63,23 @@ bool NURBSCurve::insertKnot(const float newKnot)
     {
         for (unsigned int i = 1; i < knotVector.size(); i++)
         {
-            if (newKnot <= knotVector[i] && newKnot >= knotVector[i + 1])
+            if (newKnot >= knotVector[i] && newKnot <= knotVector[i + 1])
             {
-                for (int h = i + 1; h < controlPoints.size(); h++)
+                Vec4f temp;
+                for (int h = i + 1; h < controlPoints.size() - 1; h++)
                 {
+                    temp = controlPoints[h + 1];
                     controlPoints[h + 1] = controlPoints[h];
+                    controlPoints[i + 1] = temp;
                 }
-                for (int j = i - degree + 1; j <= i; j++)
+				controlPoints.push_back(temp);
+
+                for (int j = i - degree + 2; j <= i + 1; j++)
                 {
                     float alpha = (newKnot - knotVector[j]) / (knotVector[j + degree] - knotVector[j]);
                     controlPoints[j] = alpha*controlPoints[j] + (1 - alpha)*controlPoints[j - 1];
                 }
+                //knotVector[i + 1] = newKnot;
                 knotVector.insert(knotVector.begin() + i + 1, newKnot);
                 return true;
             }
@@ -85,33 +93,36 @@ bool NURBSCurve::insertKnot(const float newKnot)
 Vec4f NURBSCurve::evaluteDeBoor(const float t, Vec4f& tangent)
 {
 	// create a copy of this NURBS curve
-	NURBSCurve tempNURBS(*this);
+	NURBSCurve tempNURBS = (*this);
 	Vec4f point;
 	int s = 0; //multiplizitaet
 
 	int k = 0;
 	// TODO: use insertKnot to evaluate the curve and its tangent. Take care to NOT modify this NURBS curve. Instead use the temporary copy.
 	// =====================================================================================================================================
-	for (int i = 0; i < knotVector.size(); i++)
+	for (int i = 0; i < tempNURBS.getKnotVector().size(); i++)
 	{
-		if (tempNURBS.knotVector[i] == t)
+		if (tempNURBS.getKnotVector()[i] == t)
 		{
 			s++;
 		}
-		if (tempNURBS.knotVector[i] < t)
+		if (tempNURBS.getKnotVector()[i] <= t)
 		{
 			k++;
 		}
+		k;
 	}
-	for (s; s <= tempNURBS.degree; s++)
+	for (s; s <= tempNURBS.getDegree(); s++)
 	{
-		if (s == tempNURBS.degree - 1)
+		if (s == tempNURBS.getDegree() - 1)
 		{
-			tangent = tempNURBS.controlPoints[k] - tempNURBS.controlPoints[k - 1];
+            tangent = Vec4f(1, 1, 1, 1);
+			tangent = tempNURBS.getControlPoints()[k] - tempNURBS.getControlPoints()[k - 1];
 		}
-		insertKnot(t);
+		tempNURBS.insertKnot(t);
+        //k++;
 	}
-	point = tempNURBS.controlPoints[k];
+	point = tempNURBS.getControlPoints()[k];
 	// =====================================================================================================================================
 	return point;
 
@@ -136,7 +147,7 @@ std::pair<std::vector<Vec4f>, std::vector<Vec4f>> NURBSCurve::evaluateCurve(cons
 		//create empty tangent
 		Vec4f *aTangent = new Vec4f();
 		tangents.push_back(*aTangent);
-		Vec4f point = evaluteDeBoor(i, tangents[i]);
+		Vec4f point = evaluteDeBoor(i, tangents[i * numberSamples]);
 		points.push_back(point);
 	}
 

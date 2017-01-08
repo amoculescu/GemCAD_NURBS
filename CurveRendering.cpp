@@ -17,11 +17,10 @@ void drawBezier(BezierCurve &bezierCurve, Vec3f color) {
     int counter = 0;
     glBegin(GL_LINE_STRIP);
     glColor3fv(&color.x);
-    for (float i = 0.0; i <= 1.0; i += 1.0f / numberOfPoints) {
-        std::vector<Vec3f> myPointArray = points.first;
-        Vec3f myPoint = myPointArray[counter];
+    std::vector<Vec3f> myPointArray = points.first;
+    for (float i = 0.0; i < myPointArray.size(); i++) {
+        Vec3f myPoint = myPointArray[i];
         glVertex3fv(&myPoint.x);
-        counter++;
     }
     glEnd();
 }
@@ -62,49 +61,57 @@ void drawRationalBezierCtrlPolygon(const BezierCurve &bezierCurve, Vec3f color) 
     }
 }
 
-void drawNURBS(NURBSCurve &nurbsCurve, Vec3f color) {
-    // TODO: draw NURBS curve
-    // NOT homogenized
-    // ===================================================================================
+void drawNURBS(NURBSCurve &nurbsCurve, Vec3f color)
+{
     std::pair<std::vector<Vec4f>, std::vector<Vec4f>> points = nurbsCurve.evaluateCurve(numberOfPoints);
     std::vector<Vec4f> pointVector = points.first;
     glBegin(GL_LINE_STRIP);
-    glColor3fv(&color.x);
-    for (float i = 0.0; i <= 1.0; i += 1.0f / numberOfPoints)
+    Vec3f testcol = Vec3f(0.0, 1.0, 0.0);
+    glColor3fv(&testcol.x);
+    for (float i = 0.0; i < pointVector.size(); i++)
     {
         glVertex3f(pointVector[i].x, pointVector[i].y, pointVector[i].z);
     }
     glEnd();
-    // ===================================================================================
 }
 
 void drawNURBS_H(NURBSCurve &nurbsCurve, Vec3f color) {
-    // TODO: draw NURBS curve
-    // homogenized
-    // ===================================================================================
-
-
-    // ===================================================================================
+    std::pair<std::vector<Vec4f>, std::vector<Vec4f>> points = nurbsCurve.evaluateCurve(numberOfPoints);
+    std::vector<Vec4f> pointVector = points.first;
+    glBegin(GL_LINE_STRIP);
+    Vec3f testcol = Vec3f(1.0, 1.0, 1.0);
+    glColor3fv(&testcol.x);
+    for (float i = 0.0; i < pointVector.size(); i++)
+    {
+        Vec3f point = Vec3f{pointVector[i].x / pointVector[i].w,
+                            pointVector[i].y / pointVector[i].w,
+                            pointVector[i].z / pointVector[i].w};
+        glVertex3fv(&point.x);
+    }
+    glEnd();
 }
 
 void drawNURBSCtrlPolygon(const NURBSCurve &nurbsCurve, Vec3f color) {
-    // TODO: implement the visualization of the
-    // NOT homogenized
-    // NURBS' control polygon (e.g. with GL_LINE_STRIP)
-    // =========================================================================================================
-
-
-    // =========================================================================================================
+    glBegin(GL_LINE_STRIP); //make line
+    Vec3f testcol = Vec3f(0.0, 0.0, 1.0);
+    glColor3fv(&testcol.x); //color
+    for (int i = 0; i < nurbsCurve.getControlPoints().size(); i++) { //draw a line to every control point
+        glVertex3f(nurbsCurve.getControlPoints()[i].x, nurbsCurve.getControlPoints()[i].y, nurbsCurve.getControlPoints()[i].z);
+    }
+    glEnd();
 }
 
 void drawNURBSCtrlPolygon_H(const NURBSCurve &nurbsCurve, Vec3f color) {
-    // TODO: implement the visualization of the
-    // homogenized
-    // NURBS' control polygon (e.g. with GL_LINE_STRIP)
-    // =========================================================================================================
-
-
-    // =========================================================================================================
+    glBegin(GL_LINE_STRIP); //make line
+    Vec3f testcol = Vec3f(1.0, 0.0, 0.0);
+    glColor3fv(&testcol.x); //color
+    for (int i = 0; i < nurbsCurve.getControlPoints().size(); i++) { //draw a line to every control point
+        Vec3f point = {nurbsCurve.getControlPoints()[i].x / nurbsCurve.getControlPoints()[i].w,
+                       nurbsCurve.getControlPoints()[i].y / nurbsCurve.getControlPoints()[i].w,
+                       nurbsCurve.getControlPoints()[i].z / nurbsCurve.getControlPoints()[i].w};
+        glVertex3fv(&point.x);
+    }
+    glEnd();
 }
 
 void renderBezier(BezierCurve &bezierCurve, Vec3f color) {

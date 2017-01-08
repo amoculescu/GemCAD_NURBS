@@ -126,7 +126,7 @@ std::pair<std::vector<Vec3f>, std::vector<Vec3f>> BezierCurve::evaluateCurve(con
         //create empty tangent
         Vec3f *aTangent = new Vec3f();
         tangents.push_back(*aTangent);
-        Vec3f point = evaluateCurveAt(i, tangents[i]);
+        Vec3f point = evaluateCurveAt(i, tangents[i * numberSamples]);
         points.push_back(point);
     }
     //return pair of points and tangents
