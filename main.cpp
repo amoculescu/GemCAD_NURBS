@@ -172,41 +172,45 @@ void fillArray()
 
 void fillArrayNurbs()
 {
-//
-//	Vec4f point0 = Vec4f(1.0, 1.0, 1.0, 1.0);
-//	Vec4f point1 = Vec4f(2.0, 4.0, 1.0, 2.0);
-//	Vec4f point2 = Vec4f(3.0, 9.0, 1.0, 3.0);
-//	Vec4f point3 = Vec4f(4.0, 5.0, 1.0, 2.0);
-//	Vec4f point4 = Vec4f(5.0, 10.0, 1.0, 2.0);
-//	Vec4f point5 = Vec4f(6.0, 1.0, 1.0, 1.0);
-//
-//	ctrlPtsNurbs.push_back(point0);
-//	ctrlPtsNurbs.push_back(point1);
-//	ctrlPtsNurbs.push_back(point2);
-//	ctrlPtsNurbs.push_back(point3);
-//	ctrlPtsNurbs.push_back(point4);
-//	ctrlPtsNurbs.push_back(point5);
-//
-//	float knot0 = 0;
-//	float knot1 = 0;
-//	float knot2 = 0;
-//	float knot3 = 0.25;
-//	float knot4 = 0.5;
-//	float knot5 = 0.75;
-//	float knot6 = 1;
-//	float knot7 = 1;
-//	float knot8 = 1;
-//
-//	knotVector.push_back(knot0);
-//	knotVector.push_back(knot1);
-//	knotVector.push_back(knot2);
-//	knotVector.push_back(knot3);
-//	knotVector.push_back(knot4);
-//	knotVector.push_back(knot5);
-//	knotVector.push_back(knot6);
-//	knotVector.push_back(knot7);
-//	knotVector.push_back(knot8);
-//
+
+	Vec4f point0 = Vec4f(1.0, 1.0, 1.0, 1.0);
+	Vec4f point1 = Vec4f(2.0, 4.0, 1.0, 2.0);
+	Vec4f point2 = Vec4f(3.0, 9.0, 1.0, 3.0);
+	Vec4f point3 = Vec4f(4.0, 5.0, 1.0, 2.0);
+	Vec4f point4 = Vec4f(5.0, 10.0, 1.0, 2.0);
+	Vec4f point5 = Vec4f(6.0, 1.0, 1.0, 1.0);
+
+	ctrlPtsNurbs.push_back(point0);
+	ctrlPtsNurbs.push_back(point1);
+	ctrlPtsNurbs.push_back(point2);
+	ctrlPtsNurbs.push_back(point3);
+	ctrlPtsNurbs.push_back(point4);
+	ctrlPtsNurbs.push_back(point5);
+
+	float knot0 = 0;
+	float knot1 = 0;
+	float knot2 = 0;
+	float knot3 = 0.25;
+	float knot4 = 0.5;
+	float knot5 = 0.75;
+	float knot6 = 1;
+	float knot7 = 1;
+	float knot8 = 1;
+
+	knotVector.push_back(knot0);
+	knotVector.push_back(knot1);
+	knotVector.push_back(knot2);
+	knotVector.push_back(knot3);
+	knotVector.push_back(knot4);
+	knotVector.push_back(knot5);
+	knotVector.push_back(knot6);
+	knotVector.push_back(knot7);
+	knotVector.push_back(knot8);
+
+}
+
+void fillArrayNurbsCircle()
+{
 	// Kreis
 	Vec4f point0 = Vec4f(1.0, 0.0, 0.0, 1);
 	Vec4f point1 = Vec4f(1.0, 1.0, 0.0, 0.7071);
@@ -339,9 +343,27 @@ void keyPressed(unsigned char key, int x, int y)
             fillArray();
             BezierCurve *myBezier = new BezierCurve(ctrlPts, true);
             bezierCurves.push_back(*myBezier);
+			ctrlPts.clear();
             glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
             break;
         }
+        case 'k':
+		case 'K': {
+			fillArrayNurbsCircle();
+			NURBSCurve *circle = new NURBSCurve(ctrlPtsNurbs, knotVector, /*knotVektor.size() - ctrlPts.size() - 1*/ 2);
+			nurbsCurves.push_back(*circle);
+			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+			break;
+		}
+		case 'c':
+		case 'C': {
+			nurbsCurves.clear();
+			bezierCurves.clear();
+			ctrlPtsNurbs.clear();
+			knotVector.clear();
+			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+			break;
+		}
 		case 'n':
 		case 'N': {
 			fillArrayNurbs();
@@ -349,6 +371,7 @@ void keyPressed(unsigned char key, int x, int y)
 			nurbsCurves.push_back(*myNURBS);
 			glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
 			break;
+
 		}
     // TODO: place custom functions on button evyents here to present your results
     // like changing the active Bbezier/NURBS curve (activeNURBS, activeBezier)
@@ -414,13 +437,16 @@ void coutHelp()
     std::cout << "ESC: exit" << std::endl;
     std::cout << "H: show this (H)elp file" << std::endl;
     std::cout << "R: (R)eset view" << std::endl;
-    std::cout << "F: create control points" << std::endl;
-    std::cout << "'+': add 0.01 to evalParameter" << std::endl;
-    std::cout << "'-': subtract 0.01 from evalParameter" << std::endl;
+
     // TODO: update help text according to your changes
     // ================================================
-
-
+	std::cout << "------ " << std::endl;
+	std::cout << "F: (F)ill - draws a non rational Bezier Curve" << std::endl;
+	std::cout << "'+': add 0.01 to evalParameter" << std::endl;
+	std::cout << "'-': subtract 0.01 from evalParameter" << std::endl;
+	std::cout << "------ NURBS ------" << std::endl;
+	std::cout << "'K': (K)reis - draws a circle" << std::endl;
+	std::cout << "'N': (N)URBS - draws a simple example" << std::endl;
     // ================================================
     std::cout << "==========================" << std::endl;
     std::cout << std::endl;
