@@ -64,6 +64,7 @@ void setDefaults()
     mouseY = 0;
     mouseButton = 0;
     activeBezier = 0;
+    activeNURBS = 0;
     mouseSensitivy = 1.0f;
     evalParameter = 0.6f;
 }
@@ -250,7 +251,7 @@ void drawObjects()
     Vec3f ctrlPolygonCol = Vec3f(1.0f, 0.0f, 0.0f);
     for(unsigned int i = 0; i < bezierCurves.size(); i++)
     {
-        renderBezier(bezierCurves[i], curveColor);
+        renderBezier(bezierCurves[i]);
         curveColor = curveColor +  Vec3f(0.0f, 0.3f, 0.3f);
         ctrlPolygonCol = ctrlPolygonCol + Vec3f(0.0f, 0.5f, 0.0f);
         if(i == activeBezier)

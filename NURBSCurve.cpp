@@ -166,6 +166,11 @@ std::pair<std::vector<Vec4f>, std::vector<Vec4f>> NURBSCurve::evaluateCurve(cons
 	return std::make_pair(points,tangents);
 }
 
+void NURBSCurve::changeWeight(int pos, float weight)
+{
+    controlPoints[pos].w = weight;
+}
+
 std::ostream& operator<< (std::ostream& os, NURBSCurve& nurbs)
 {
 	// degree
