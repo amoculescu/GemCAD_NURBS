@@ -53,6 +53,8 @@ void reshape(GLint width, GLint height);
 
 void fillArray();
 
+void fillArrayNurbsCircle();
+
 // =================
 // === RENDERING ===
 // =================
