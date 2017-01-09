@@ -115,7 +115,7 @@ Vec4f NURBSCurve::evaluteDeBoor(const float t, Vec4f& tangent)
 	{
 		if (s == tempNURBS.getDegree() - 1)
 		{
-            //tangent = Vec4f(1, 1, 1, 1);
+//            tangent = Vec4f(1, 1, 1, 1);
 			tangent = tempNURBS.getControlPoints()[k - 1];
 		}
 		tempNURBS.insertKnot(t);
@@ -137,6 +137,10 @@ std::pair<std::vector<Vec4f>, std::vector<Vec4f>> NURBSCurve::evaluateCurve(cons
 	// Note: use the evaluteDeBoor(t) function. 
 	// ==========================================================================================================
 	
+	// first point (since evaluateDeBoor = false for t = 0 / t = 1
+	points.push_back(controlPoints[0]);
+
+
 	//calculate interval
 	float t = 1.0f / numberSamples;
 
@@ -148,6 +152,13 @@ std::pair<std::vector<Vec4f>, std::vector<Vec4f>> NURBSCurve::evaluateCurve(cons
 		Vec4f point = evaluteDeBoor(i, tangents[i * numberSamples]);
 		points.push_back(point);
 	}
+
+	// last point
+	points.push_back(controlPoints[controlPoints.size()-1]);
+
+	// hard fix
+	points[1] = points [0];
+//	tangents[1] = tangents [0];
 
 
 	// ==========================================================================================================

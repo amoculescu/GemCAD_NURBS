@@ -172,39 +172,76 @@ void fillArray()
 
 void fillArrayNurbs()
 {
-	Vec4f point0 = Vec4f(1.0, 1.0, 1.0, 1.0);
-	Vec4f point1 = Vec4f(2.0, 4.0, 1.0, 2.0);
-	Vec4f point2 = Vec4f(3.0, 9.0, 1.0, 3.0);
-	Vec4f point3 = Vec4f(4.0, 5.0, 1.0, 2.0);
-	Vec4f point4 = Vec4f(5.0, 10.0, 1.0, 2.0);
-	Vec4f point5 = Vec4f(6.0, 1.0, 1.0, 1.0);
-	
+//
+//	Vec4f point0 = Vec4f(1.0, 1.0, 1.0, 1.0);
+//	Vec4f point1 = Vec4f(2.0, 4.0, 1.0, 2.0);
+//	Vec4f point2 = Vec4f(3.0, 9.0, 1.0, 3.0);
+//	Vec4f point3 = Vec4f(4.0, 5.0, 1.0, 2.0);
+//	Vec4f point4 = Vec4f(5.0, 10.0, 1.0, 2.0);
+//	Vec4f point5 = Vec4f(6.0, 1.0, 1.0, 1.0);
+//
+//	ctrlPtsNurbs.push_back(point0);
+//	ctrlPtsNurbs.push_back(point1);
+//	ctrlPtsNurbs.push_back(point2);
+//	ctrlPtsNurbs.push_back(point3);
+//	ctrlPtsNurbs.push_back(point4);
+//	ctrlPtsNurbs.push_back(point5);
+//
+//	float knot0 = 0;
+//	float knot1 = 0;
+//	float knot2 = 0;
+//	float knot3 = 0.25;
+//	float knot4 = 0.5;
+//	float knot5 = 0.75;
+//	float knot6 = 1;
+//	float knot7 = 1;
+//	float knot8 = 1;
+//
+//	knotVector.push_back(knot0);
+//	knotVector.push_back(knot1);
+//	knotVector.push_back(knot2);
+//	knotVector.push_back(knot3);
+//	knotVector.push_back(knot4);
+//	knotVector.push_back(knot5);
+//	knotVector.push_back(knot6);
+//	knotVector.push_back(knot7);
+//	knotVector.push_back(knot8);
+//
+	// Kreis
+	Vec4f point0 = Vec4f(1.0, 0.0, 0.0, 1);
+	Vec4f point1 = Vec4f(1.0, 1.0, 0.0, 0.7071);
+	Vec4f point2 = Vec4f(0.0, 1.0, 0.0, 1.0);
+	Vec4f point3 = Vec4f(-1.0, 1.0, 0.0, 0.7071);
+	Vec4f point4 = Vec4f(-1.0, 0.0, 0.0, 1.0);
+	Vec4f point5 = Vec4f(-1.0, -1.0, 0.0, 0.7071);
+	Vec4f point6 = Vec4f(0.0, -1.0, 0.0, 1.0);
+	Vec4f point7 = Vec4f(1.0, -1.0, 0.0, 0.7071);
+	Vec4f point8 = Vec4f(1.0, 0.0, 0.0, 1.0);
+
 	ctrlPtsNurbs.push_back(point0);
 	ctrlPtsNurbs.push_back(point1);
 	ctrlPtsNurbs.push_back(point2);
 	ctrlPtsNurbs.push_back(point3);
 	ctrlPtsNurbs.push_back(point4);
 	ctrlPtsNurbs.push_back(point5);
+	ctrlPtsNurbs.push_back(point6);
+	ctrlPtsNurbs.push_back(point7);
+	ctrlPtsNurbs.push_back(point8);
 
-	float knot0 = 0;
-	float knot1 = 0;
-	float knot2 = 0;
-	float knot3 = 0.25;
-	float knot4 = 0.5;
-	float knot5 = 0.75;
-	float knot6 = 1;
-	float knot7 = 1;
-	float knot8 = 1;
 
-	knotVector.push_back(knot0);
-	knotVector.push_back(knot1);
-	knotVector.push_back(knot2);
-	knotVector.push_back(knot3);
-	knotVector.push_back(knot4);
-	knotVector.push_back(knot5);
-	knotVector.push_back(knot6);
-	knotVector.push_back(knot7);
-	knotVector.push_back(knot8);
+	knotVector.push_back(0);
+	knotVector.push_back(0);
+	knotVector.push_back(0);
+	knotVector.push_back(.25);
+	knotVector.push_back(.25);
+	knotVector.push_back(.5);
+	knotVector.push_back(.5);
+	knotVector.push_back(.75);
+	knotVector.push_back(.75);
+	knotVector.push_back(1);
+	knotVector.push_back(1);
+	knotVector.push_back(1);
+
 }
 
 void drawObjects()
