@@ -429,13 +429,6 @@ void keyPressed(unsigned char key, int x, int y)
             ctrlPtsNurbs.clear();
 			break;
 		}
-    // TODO: place custom functions on button evyents here to present your results
-    // like changing the active Bbezier/NURBS curve (activeNURBS, activeBezier)
-    // and varying the evaluation parameter (evalParameter) for the bezier curve
-    // ==========================================================================
-
-
-    // ==========================================================================
     }
 }
 
