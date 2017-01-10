@@ -16,6 +16,8 @@ public:
 	// constructor which takes given control points P, knot vector U and degree p
 	NURBSCurve(const std::vector<Vec4f>& controlPoints_, const std::vector<float>& knotVector_, const unsigned int degree_);
 
+    void changeKnotVector(int pos, float newKnot);
+
     void changeWeight(int pos, float newWeight);
 
 	// insert a knot with deBoor algorithm. returns false, if newKnot is not within begin and end parameter.

@@ -21,7 +21,7 @@ void BezierCurve::push(Vec3f ctrlPt) {
 std::pair<BezierCurve, BezierCurve> BezierCurve::separateCurveAt(const float t) {
     int n = controlPoints.size() - 1; //grade of curve
     std::vector<Vec3f> cps1, cps2, tempVector;
-    if(rational == true)
+    if(rational)
     {
         //put every control point of curve into tempVector
         for (int i = 0; i <= n; i++)
@@ -38,12 +38,6 @@ std::pair<BezierCurve, BezierCurve> BezierCurve::separateCurveAt(const float t) 
         //split every segment at t, create new points and push to respective curve
         for (int i = 0; i < n; i++)
         {
-            //only add second "parent" if new point isn't last or second to last
-            if (tempVector.size() > 2)
-            {
-                //cps1.push_back(tempVector[1]);
-                //cps2.push_back(tempVector[tempVector.size() - 2]);
-            }
             //split curve at t
             for (int k = 0; k < n - i; k++)
             {
@@ -74,12 +68,6 @@ std::pair<BezierCurve, BezierCurve> BezierCurve::separateCurveAt(const float t) 
         //split every segment at t, create new points and push to respective curve
         for (int i = 0; i < n; i++)
         {
-            //only add second "parent" if new point isn't last or second to last
-            if (tempVector.size() > 2)
-            {
-                cps1.push_back(tempVector[1]);
-                cps2.push_back(tempVector[tempVector.size() - 2]);
-            }
             //split curve at t
             for (int k = 0; k < n - i; k++)
             {

@@ -140,25 +140,32 @@ void drawCS()
 
 void fillArray()
 {
-    //creates control points
+    Vec3f point0 = Vec3f(1.0f, 1.0f, 1.0f);
+    Vec3f point1 = Vec3f(2.0f, 3.0f, -3.0f);
+    Vec3f point2 = Vec3f(4.0f, 6.0f, -1.0f);
+    Vec3f point3 = Vec3f(7.0f, 4.0f, 2.0f);
+    Vec3f point4 = Vec3f(10.0f, 0.0f, 5.0f);
+    Vec3f point5 = Vec3f(11.0f, -2.0f, -3.0f);
 
-    //random points
+    ctrlPts.push_back(point0);
+    ctrlPts.push_back(point1);
+    ctrlPts.push_back(point2);
+    ctrlPts.push_back(point3);
+    ctrlPts.push_back(point4);
+    ctrlPts.push_back(point5);
+}
 
-    /*Vec3f point0 = Vec3f(1.0, 1.0, 1.0);
-    Vec3f point1 = Vec3f(4.0, 6.0, 2.0);
-    Vec3f point2 = Vec3f(7.0, 9.0, 10.0);
-    Vec3f point3 = Vec3f(10.0, 2.0, -4.0);*/
-
-    //circle
-    Vec3f point0 = Vec3f(1.0, 0.0, 1.0);
-    Vec3f point1 = Vec3f(1.0, 1.0, 1.0);
-    Vec3f point2 = Vec3f(0.0, 2.0, 2.0);
-    Vec3f point3 = Vec3f(-1.0, 1.0, 1.0);
-    Vec3f point4 = Vec3f(-1.0, 0.0, 1.0);
-    Vec3f point5 = Vec3f(-1.0, -1.0, 1.0);
-    Vec3f point6 = Vec3f(0.0, -2.0, 2.0);
-    Vec3f point7 = Vec3f(1.0, -1.0, 1.0);
-    Vec3f point8 = Vec3f(1.0, 0.0, 1.0);
+void fillArrayCircle()
+{
+    Vec3f point0 = Vec3f(1.0f, 0.0f, 1.0f);
+    Vec3f point1 = Vec3f(1.0f, 1.0f, 1.0f);
+    Vec3f point2 = Vec3f(0.0f, 2.0f, 2.0f);
+    Vec3f point3 = Vec3f(-1.0f, 1.0f, 1.0f);
+    Vec3f point4 = Vec3f(-1.0f, 0.0f, 1.0f);
+    Vec3f point5 = Vec3f(-1.0f, -1.0f, 1.0f);
+    Vec3f point6 = Vec3f(0.0f, -2.0f, 2.0f);
+    Vec3f point7 = Vec3f(1.0f, -1.0f, 1.0f);
+    Vec3f point8 = Vec3f(1.0f, 0.0f, 1.0f);
 
     ctrlPts.push_back(point0);
     ctrlPts.push_back(point1);
@@ -174,12 +181,12 @@ void fillArray()
 void fillArrayNurbs()
 {
 
-	Vec4f point0 = Vec4f(1.0, 1.0, 1.0, 1.0);
-	Vec4f point1 = Vec4f(2.0, 4.0, 1.0, 2.0);
-	Vec4f point2 = Vec4f(3.0, 9.0, 1.0, 3.0);
-	Vec4f point3 = Vec4f(4.0, 5.0, 1.0, 2.0);
-	Vec4f point4 = Vec4f(5.0, 10.0, 1.0, 2.0);
-	Vec4f point5 = Vec4f(6.0, 1.0, 1.0, 1.0);
+	Vec4f point0 = Vec4f(1.0f, 1.0f, 1.0f, 1.0f);
+	Vec4f point1 = Vec4f(2.0f, 4.0f, 1.0f, 2.0f);
+	Vec4f point2 = Vec4f(3.0f, 9.0f, 1.0f, 3.0f);
+	Vec4f point3 = Vec4f(4.0f, 5.0f, 1.0f, 2.0f);
+	Vec4f point4 = Vec4f(5.0f, 10.0f, 1.0f, 2.0f);
+	Vec4f point5 = Vec4f(6.0f, 1.0f, 1.0f, 1.0f);
 
 	ctrlPtsNurbs.push_back(point0);
 	ctrlPtsNurbs.push_back(point1);
@@ -213,15 +220,15 @@ void fillArrayNurbs()
 void fillArrayNurbsCircle()
 {
 	// Kreis
-	Vec4f point0 = Vec4f(1.0, 0.0, 0.0, 1);
-	Vec4f point1 = Vec4f(1.0, 1.0, 0.0, 0.7071);
-	Vec4f point2 = Vec4f(0.0, 1.0, 0.0, 1.0);
-	Vec4f point3 = Vec4f(-1.0, 1.0, 0.0, 0.7071);
-	Vec4f point4 = Vec4f(-1.0, 0.0, 0.0, 1.0);
-	Vec4f point5 = Vec4f(-1.0, -1.0, 0.0, 0.7071);
-	Vec4f point6 = Vec4f(0.0, -1.0, 0.0, 1.0);
-	Vec4f point7 = Vec4f(1.0, -1.0, 0.0, 0.7071);
-	Vec4f point8 = Vec4f(1.0, 0.0, 0.0, 1.0);
+	Vec4f point0 = Vec4f(1.0f, 0.0f, 0.0f, 1.0f);
+	Vec4f point1 = Vec4f(1.0f, 1.0f, 0.0f, 0.7071f);
+	Vec4f point2 = Vec4f(0.0f, 1.0f, 0.0f, 1.0f);
+	Vec4f point3 = Vec4f(-1.0f, 1.0f, 0.0f, 0.7071f);
+	Vec4f point4 = Vec4f(-1.0f, 0.0f, 0.0f, 1.0f);
+	Vec4f point5 = Vec4f(-1.0f, -1.0f, 0.0f, 0.7071f);
+	Vec4f point6 = Vec4f(0.0f, -1.0f, 0.0f, 1.0f);
+	Vec4f point7 = Vec4f(1.0f, -1.0f, 0.0f, 0.7071f);
+	Vec4f point8 = Vec4f(1.0f, 0.0f, 0.0f, 1.0f);
 
 	ctrlPtsNurbs.push_back(point0);
 	ctrlPtsNurbs.push_back(point1);
@@ -310,19 +317,37 @@ void keyPressed(unsigned char key, int x, int y)
             // reset view
         case 'r' :
         case 'R' :
-            setDefaults();
-            glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
+        {
+            fillArrayCircle();
+            BezierCurve *myBezier = new BezierCurve(ctrlPts, true);
+            bezierCurves.push_back(*myBezier);
+            ctrlPts.clear();
+            glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
             break;
+        }
         case 'a' :
         case 'A' :
-            if(activeBezier <= bezierCurves.size() - 1)
+            if(bezierCurves.size() > 0)
             {
-                activeBezier += 1;
+                if (activeBezier < bezierCurves.size())
+                {
+                    activeBezier += 1;
+                } else
+                {
+                    activeBezier = 0;
+                }
             }
-            else {
-                activeBezier = 0;
+            if(nurbsCurves.size() > 0)
+            {
+                if(activeNURBS < nurbsCurves.size())
+                {
+                    activeNURBS += 1;
+                }
+                else
+                {
+                    activeNURBS = 0;
+                }
             }
-            std::cout <<"bezierCurves:" << bezierCurves.size() << " activeBezier: " << activeBezier << std::endl;
             glutPostRedisplay();
 			break;
         case '+' :
@@ -339,10 +364,10 @@ void keyPressed(unsigned char key, int x, int y)
                 glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
             }
             break;
-        case 'f' :
-        case 'F' : {
+        case 'b' :
+        case 'B' : {
             fillArray();
-            BezierCurve *myBezier = new BezierCurve(ctrlPts, true);
+            BezierCurve *myBezier = new BezierCurve(ctrlPts, false);
             bezierCurves.push_back(*myBezier);
 			ctrlPts.clear();
             glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
@@ -351,28 +376,58 @@ void keyPressed(unsigned char key, int x, int y)
         case 'k':
 		case 'K': {
 			fillArrayNurbsCircle();
-			NURBSCurve *circle = new NURBSCurve(ctrlPtsNurbs, knotVector, /*knotVektor.size() - ctrlPts.size() - 1*/ 2);
+			NURBSCurve *circle = new NURBSCurve(ctrlPtsNurbs, knotVector, 2);
 			nurbsCurves.push_back(*circle);
 			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+            knotVector.clear();
+            ctrlPtsNurbs.clear();
 			break;
 		}
 		case 'c':
 		case 'C': {
-			nurbsCurves.clear();
+            nurbsCurves.clear();
 			bezierCurves.clear();
 			ctrlPtsNurbs.clear();
 			knotVector.clear();
-			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+            setDefaults();
+            glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
 			break;
-		}
+        }
+        case 'v':
+        case 'V':
+        {
+            int pos;
+            float knot;
+            std::cout << "specify a knot in knotvector" << std::endl;
+            std::cin >> pos;
+            std::cout << "specify a new value for the knot" << std::endl;
+            std::cin >> knot;
+            nurbsCurves[activeNURBS].changeKnotVector(pos, knot);
+            glutPostRedisplay();
+            break;
+        }
+        case 'w':
+        case 'W':
+        {
+            int pos;
+            float weight;
+            std::cout << "select a point" << std::endl;
+            std::cin >> pos;
+            std::cout << "specify a new weight" << std::endl;
+            std::cin >> weight;
+            nurbsCurves[activeNURBS].changeWeight(pos, weight);
+            glutPostRedisplay();
+            break;
+        }
 		case 'n':
 		case 'N': {
 			fillArrayNurbs();
-			NURBSCurve *myNURBS = new NURBSCurve(ctrlPtsNurbs, knotVector, /*knotVektor.size() - ctrlPts.size() - 1*/ 2);
+			NURBSCurve *myNURBS = new NURBSCurve(ctrlPtsNurbs, knotVector, 2);
 			nurbsCurves.push_back(*myNURBS);
 			glutPostRedisplay();    // use this whenever 3d data changed to redraw the scene
+            knotVector.clear();
+            ctrlPtsNurbs.clear();
 			break;
-
 		}
     // TODO: place custom functions on button evyents here to present your results
     // like changing the active Bbezier/NURBS curve (activeNURBS, activeBezier)

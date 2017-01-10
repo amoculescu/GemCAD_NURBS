@@ -202,7 +202,7 @@ void renderNURBSEvaluation(NURBSCurve &nurbsCurve, float t) {
         drawNURBSCtrlPolygon_H(nurbsCurve, color);
 
         // draw tangents of the not homogenized curve
-        glColor3f(0.5f, 0.35f, 0.0f);
+        /*glColor3f(0.5f, 0.35f, 0.0f);
         glBegin(GL_LINES);
         for (unsigned int i = 0; i < tangents.size(); ++i) {
             auto p = points[i];
@@ -226,6 +226,6 @@ void renderNURBSEvaluation(NURBSCurve &nurbsCurve, float t) {
             t = (t - p).normalized() + p;
             glVertex3fv(&t.x);
         }
-        glEnd();
+        glEnd();*/
     }
 }

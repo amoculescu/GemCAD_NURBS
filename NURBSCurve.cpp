@@ -166,6 +166,11 @@ std::pair<std::vector<Vec4f>, std::vector<Vec4f>> NURBSCurve::evaluateCurve(cons
 	return std::make_pair(points,tangents);
 }
 
+void NURBSCurve::changeKnotVector(int pos, float knot)
+{
+    knotVector[pos] = knot;
+}
+
 void NURBSCurve::changeWeight(int pos, float weight)
 {
     controlPoints[pos].w = weight;
