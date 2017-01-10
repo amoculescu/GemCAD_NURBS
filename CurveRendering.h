@@ -34,5 +34,6 @@ void renderNURBS(NURBSCurve &nurbsCurve);
 void renderNURBSEvaluation(NURBSCurve &nurbsCurve, float t);
 
 Vec3f setcolor();
+void setKlickiBunti();
 
 #endif //

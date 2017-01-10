@@ -310,6 +310,10 @@ void keyPressed(unsigned char key, int x, int y)
             exit(0);
         break;
     // help file
+        case '1':
+        {
+            setKlickiBunti();
+        }
         case 'h' :
         case 'H' :
             coutHelp();
@@ -490,8 +494,11 @@ void coutHelp()
     // TODO: update help text according to your changes
     // ================================================
 	std::cout << "------ " << std::endl;
-	std::cout << "F: (F)ill - draws a non rational Bezier Curve" << std::endl;
-	std::cout << "'+': add 0.01 to evalParameter" << std::endl;
+	std::cout << "B: draws a non rational Bezier Curve" << std::endl;
+    std::cout << "R: draw circle with rational bezier curve" << std::endl;
+    std::cout << "K: draws a cirlcle with nurbs Curve" << std::endl;
+    std::cout << "N: nurbs curve" << std::endl;
+    std::cout << "'+': add 0.01 to evalParameter" << std::endl;
 	std::cout << "'-': subtract 0.01 from evalParameter" << std::endl;
 	std::cout << "------ NURBS ------" << std::endl;
 	std::cout << "'K': (K)reis - draws a circle" << std::endl;

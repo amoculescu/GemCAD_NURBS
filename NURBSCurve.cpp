@@ -125,7 +125,7 @@ Vec4f NURBSCurve::evaluteDeBoor(const float t, Vec4f& tangent)
         {
             if (s == tempNURBS.getDegree() - 1)
             {
-                //tangent = tempNURBS.getControlPoints()[k];
+                tangent = tempNURBS.getControlPoints()[k];
             }
             tempNURBS.insertKnot(t);
         }
