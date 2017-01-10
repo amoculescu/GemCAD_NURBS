@@ -1,0 +1,3 @@
+/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/CMakeFiles/main.dir
+/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/CMakeFiles/ALL_BUILD.dir
+/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/CMakeFiles/ZERO_CHECK.dir

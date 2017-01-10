@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="FrameWork_OpenGL_Curves"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main">
+				<Option output="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main/fast">
+				<Option output="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/BezierCurve.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/BezierCurve.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/CurveRendering.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/CurveRendering.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/NURBSCurve.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/NURBSCurve.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/Vec3.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/Vec4.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/main.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/main.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

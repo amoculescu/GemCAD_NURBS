@@ -1,0 +1,764 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		51AFA91F8B2A417A8D04DA8D /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 27FAA1A491554C3B88DEDC2B /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				96450A8FC4254CF5A8185D07 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		DADF80BF3366495BA635A700 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 743F8A05BEAA450B949EB184 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				85356FE702FF46FF90C1203A /* CMake Rules */,
+			);
+			dependencies = (
+				2152193D4E584F43AF6888CA /* PBXTargetDependency */,
+				CAF29116E63643789A5164B3 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0B594164251C490CB39D7111 /* CurveRendering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC6F5CEA60B841BB908A9B51 /* CurveRendering.cpp */; };
+		3B5A7973D93E41868E232A82 /* NURBSCurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAC7BAF7F13449AB8E87E50E /* NURBSCurve.cpp */; };
+		4463E5655A8843C1B511B894 /* BezierCurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3483ED2F172A497B85287348 /* BezierCurve.cpp */; };
+		92EA4E59E4B147CF884EECBF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E4F14E931D4F66BF0084E9 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		087FEBDDE6494E1C968D6629 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 511E5FA128B94F18905D4566 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51AFA91F8B2A417A8D04DA8D;
+			remoteInfo = ZERO_CHECK;
+		};
+		13627996842146229D69501C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 511E5FA128B94F18905D4566 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB87F8EFFB7D4D1AB5460D36;
+			remoteInfo = main;
+		};
+		C3FA6437A9854BBE9830FE13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 511E5FA128B94F18905D4566 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51AFA91F8B2A417A8D04DA8D;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07A32BC561AE41B98A2577BA /* Vec3.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = Vec3.h; sourceTree = SOURCE_ROOT; };
+		0992CB443A7447479D2CF414 /* Vec4.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = Vec4.h; sourceTree = SOURCE_ROOT; };
+		196E4A4418B841DD81A4B53B /* CurveRendering.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = CurveRendering.h; sourceTree = SOURCE_ROOT; };
+		1E618FD34F644220B1724671 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		297BD974467D482C840B13B9 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		31E4F14E931D4F66BF0084E9 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		3483ED2F172A497B85287348 /* BezierCurve.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = BezierCurve.cpp; sourceTree = SOURCE_ROOT; };
+		3FB0B706A9914EADB3055C93 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		B7E33597D001476E9ED14E76 /* BezierCurve.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = BezierCurve.h; sourceTree = SOURCE_ROOT; };
+		CC6F5CEA60B841BB908A9B51 /* CurveRendering.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = CurveRendering.cpp; sourceTree = SOURCE_ROOT; };
+		E54ECA8FAA064192BA0190A5 /* main.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = main.h; sourceTree = SOURCE_ROOT; };
+		E976F32E00A1482EB9FAF32E /* NURBSCurve.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = NURBSCurve.h; sourceTree = SOURCE_ROOT; };
+		EAC7BAF7F13449AB8E87E50E /* NURBSCurve.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = NURBSCurve.cpp; sourceTree = SOURCE_ROOT; };
+		F387A0A9F5D242599DE9E546 /* main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = main; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0B5A1A5E94B14E67975CC129 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6877419C62664BAA84E3042A /* main */,
+				8DF79080D23F4E5A94D3F82F /* ALL_BUILD */,
+				7FAA2F5951F64A16AA6F6F5E /* ZERO_CHECK */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		47B9ABE4165F437E9703C27D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3483ED2F172A497B85287348 /* BezierCurve.cpp */,
+				CC6F5CEA60B841BB908A9B51 /* CurveRendering.cpp */,
+				EAC7BAF7F13449AB8E87E50E /* NURBSCurve.cpp */,
+				31E4F14E931D4F66BF0084E9 /* main.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		4E06FA7F12404416ADAD5344 = {
+			isa = PBXGroup;
+			children = (
+				0B5A1A5E94B14E67975CC129 /* Sources */,
+				5DF888C88529414FBC1B9AB7 /* Resources */,
+				D50BD3A1D7E8478FA4DDF1B0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5DF888C88529414FBC1B9AB7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6877419C62664BAA84E3042A /* main */ = {
+			isa = PBXGroup;
+			children = (
+				99E7D1077ABD444BB08B73F4 /* Header */,
+				47B9ABE4165F437E9703C27D /* Source */,
+				1E618FD34F644220B1724671 /* CMakeLists.txt */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		7485DFF3ABDB44EA87FAB4C2 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		7FAA2F5951F64A16AA6F6F5E /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				85FA5B36F839430FA14B1FBE /* CMake Rules */,
+				3FB0B706A9914EADB3055C93 /* CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		85FA5B36F839430FA14B1FBE /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		8DF79080D23F4E5A94D3F82F /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				7485DFF3ABDB44EA87FAB4C2 /* CMake Rules */,
+				297BD974467D482C840B13B9 /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		99E7D1077ABD444BB08B73F4 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				B7E33597D001476E9ED14E76 /* BezierCurve.h */,
+				196E4A4418B841DD81A4B53B /* CurveRendering.h */,
+				E976F32E00A1482EB9FAF32E /* NURBSCurve.h */,
+				07A32BC561AE41B98A2577BA /* Vec3.h */,
+				0992CB443A7447479D2CF414 /* Vec4.h */,
+				E54ECA8FAA064192BA0190A5 /* main.h */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		D50BD3A1D7E8478FA4DDF1B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F387A0A9F5D242599DE9E546 /* main */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB87F8EFFB7D4D1AB5460D36 /* main */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 160C8B99F21043959B0F7AA0 /* Build configuration list for PBXNativeTarget "main" */;
+			buildPhases = (
+				785251F88BB7415AAAE683EB /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94F7F8E9537B4BD18DC13B83 /* PBXTargetDependency */,
+			);
+			name = main;
+			productName = main;
+			productReference = F387A0A9F5D242599DE9E546 /* main */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		511E5FA128B94F18905D4566 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0820;
+			};
+			buildConfigurationList = FADAA038F9504779A03F4172 /* Build configuration list for PBXProject "FrameWork_OpenGL_Curves" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4E06FA7F12404416ADAD5344;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				DADF80BF3366495BA635A700 /* ALL_BUILD */,
+				51AFA91F8B2A417A8D04DA8D /* ZERO_CHECK */,
+				CB87F8EFFB7D4D1AB5460D36 /* main */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85356FE702FF46FF90C1203A /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build -f /Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		96450A8FC4254CF5A8185D07 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build -f /Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		785251F88BB7415AAAE683EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4463E5655A8843C1B511B894 /* BezierCurve.cpp in Sources */,
+				0B594164251C490CB39D7111 /* CurveRendering.cpp in Sources */,
+				3B5A7973D93E41868E232A82 /* NURBSCurve.cpp in Sources */,
+				92EA4E59E4B147CF884EECBF /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2152193D4E584F43AF6888CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB87F8EFFB7D4D1AB5460D36 /* main */;
+			targetProxy = 13627996842146229D69501C /* PBXContainerItemProxy */;
+		};
+		94F7F8E9537B4BD18DC13B83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51AFA91F8B2A417A8D04DA8D /* ZERO_CHECK */;
+			targetProxy = 087FEBDDE6494E1C968D6629 /* PBXContainerItemProxy */;
+		};
+		CAF29116E63643789A5164B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51AFA91F8B2A417A8D04DA8D /* ZERO_CHECK */;
+			targetProxy = C3FA6437A9854BBE9830FE13 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		06BB5895FC9B461AB06E2A5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs",
+					"\"/opt/X11/include\"",
+					"\"/usr/local/include\"",
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"\"/opt/X11/lib\"",
+					"\"/usr/local/lib\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-std=c++11",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lglut",
+					"-framework",
+					OpenGL,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = main;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		14CAA18D983C415286ABF60E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs";
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		1E6F28E364084EEE9E9E17BB /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs",
+					"\"/opt/X11/include\"",
+					"\"/usr/local/include\"",
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"\"/opt/X11/lib\"",
+					"\"/usr/local/lib\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-std=c++11",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lglut",
+					"-framework",
+					OpenGL,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = main;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		1ED0849948234DC7A195E686 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/build";
+			};
+			name = MinSizeRel;
+		};
+		23CD75A5FC2348D8B920F189 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs";
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		43D8A06B61834AFDA4E9EF64 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/build";
+			};
+			name = RelWithDebInfo;
+		};
+		5697858428C542BE85B55A26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/build";
+			};
+			name = Debug;
+		};
+		6199A2CAD77B476287D19B2C /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs",
+					"\"/opt/X11/include\"",
+					"\"/usr/local/include\"",
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"\"/opt/X11/lib\"",
+					"\"/usr/local/lib\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-std=c++11",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lglut",
+					"-framework",
+					OpenGL,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = main;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		6DFD4133B3EE4CEEB93531ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs";
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		8BC93CC78C6E40CDB495EA88 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs";
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		96C33D53017447A4A6699A0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build/build";
+			};
+			name = Release;
+		};
+		A08D841D2D8C4DCF8B873AE8 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs";
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		AF517677D0C24420B8A67A93 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs";
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		C3828D17CC464BAAB346A3C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs",
+					"\"/opt/X11/include\"",
+					"\"/usr/local/include\"",
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"\"/opt/X11/lib\"",
+					"\"/usr/local/lib\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11     ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lglut",
+					"-framework",
+					OpenGL,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = main;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		FD805D80ADBF4FE3B3A5E35F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs";
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		FE2BCF8F79EE47F8BF3C0D42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs";
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		160C8B99F21043959B0F7AA0 /* Build configuration list for PBXNativeTarget "main" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3828D17CC464BAAB346A3C1 /* Debug */,
+				06BB5895FC9B461AB06E2A5D /* Release */,
+				6199A2CAD77B476287D19B2C /* MinSizeRel */,
+				1E6F28E364084EEE9E9E17BB /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		27FAA1A491554C3B88DEDC2B /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CAA18D983C415286ABF60E /* Debug */,
+				6DFD4133B3EE4CEEB93531ED /* Release */,
+				23CD75A5FC2348D8B920F189 /* MinSizeRel */,
+				A08D841D2D8C4DCF8B873AE8 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		743F8A05BEAA450B949EB184 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD805D80ADBF4FE3B3A5E35F /* Debug */,
+				FE2BCF8F79EE47F8BF3C0D42 /* Release */,
+				8BC93CC78C6E40CDB495EA88 /* MinSizeRel */,
+				AF517677D0C24420B8A67A93 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FADAA038F9504779A03F4172 /* Build configuration list for PBXProject "FrameWork_OpenGL_Curves" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5697858428C542BE85B55A26 /* Debug */,
+				96C33D53017447A4A6699A0E /* Release */,
+				1ED0849948234DC7A195E686 /* MinSizeRel */,
+				43D8A06B61834AFDA4E9EF64 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 511E5FA128B94F18905D4566 /* Project object */;
+}

@@ -1,0 +1,3 @@
+/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug/CMakeFiles/main.dir

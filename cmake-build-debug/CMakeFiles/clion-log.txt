@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Volumes/S/TU-Darmstadt/WiSe_2016_2017/GemCAD/nurbs/cmake-build-debug
