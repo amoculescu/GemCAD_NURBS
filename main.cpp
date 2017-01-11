@@ -588,17 +588,20 @@ void coutHelp()
 
     // TODO: update help text according to your changes
     // ================================================
-	std::cout << "------ " << std::endl;
+	std::cout << "--------- Bezier ---------" << std::endl;
 	std::cout << "a: select active " << std::endl;
 	std::cout << "B: draws a non rational Bezier Curve" << std::endl;
-    std::cout << "R: draw circle with rational bezier curve" << std::endl;
-    std::cout << "K: draws a cirlcle with nurbs Curve" << std::endl;
-    std::cout << "N: nurbs curve" << std::endl;
+    std::cout << "R: draw circle with rational Bezier Curve" << std::endl;
     std::cout << "'+': add 0.01 to evalParameter" << std::endl;
 	std::cout << "'-': subtract 0.01 from evalParameter" << std::endl;
-	std::cout << "------ NURBS ------" << std::endl;
-	std::cout << "'K': (K)reis - draws a circle" << std::endl;
-	std::cout << "'N': (N)URBS - draws a simple example" << std::endl;
+	std::cout << "--------- NURBS ---------" << std::endl;
+	std::cout << "N: NURBS curve" << std::endl;
+    std::cout << "K: draws a circle with NURBS Curve" << std::endl;
+    std::cout << "4: knot-weight example" << std::endl;
+    std::cout << "5: increase weight" << std::endl;
+    std::cout << "6: decrease weight" << std::endl;
+    std::cout << "7: increase knot value" << std::endl;
+    std::cout << "8: decrease knot value" << std::endl;
     // ================================================
     std::cout << "==========================" << std::endl;
     std::cout << std::endl;
