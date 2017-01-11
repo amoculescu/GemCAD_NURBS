@@ -27,6 +27,8 @@
 std::vector<Vec3f> ctrlPts;
 std::vector<Vec4f> ctrlPtsNurbs;
 std::vector<float> knotVector;
+int runfloat = 0;
+int runfloat0 = 0;
 
 int main(int argc, char** argv)
 {
@@ -256,6 +258,46 @@ void fillArrayNurbsCircle()
 
 }
 
+void fillArrayWeightExample() {
+	// Kreis
+	Vec4f point0 = Vec4f(1.0f, 0.0f, 0.0f, 1.0f);
+	Vec4f point1 = Vec4f(1.0f, 1.0f, 0.0f, 1.0f +0.1*runfloat );
+	Vec4f point2 = Vec4f(0.0f, 1.0f, 0.0f, 1.0f);
+	Vec4f point3 = Vec4f(0.0f, 2.0f, 0.0f, 1.0f );
+	Vec4f point4 = Vec4f(1.0f, 2.0f, 0.0f, 1.0f);
+	Vec4f point5 = Vec4f(1.0f, 3.0f, 0.0f, 1.0f);
+
+	ctrlPtsNurbs.push_back(point0);
+	ctrlPtsNurbs.push_back(point1);
+	ctrlPtsNurbs.push_back(point2);
+	ctrlPtsNurbs.push_back(point3);
+	ctrlPtsNurbs.push_back(point4);
+	ctrlPtsNurbs.push_back(point5);
+
+	float knot0 = 0;
+	float knot1 = 0;
+	float knot2 = 0;
+	float knot3 = 0 ;
+	float knot4 = 0.48 +0.05*runfloat0;
+	float knot5 = 0.66;
+	float knot6 = 1;
+	float knot7 = 1;
+	float knot8 = 1;
+	float knot9 = 1;
+
+	knotVector.push_back(knot0);
+	knotVector.push_back(knot1);
+	knotVector.push_back(knot2);
+	knotVector.push_back(knot3);
+	knotVector.push_back(knot4);
+	knotVector.push_back(knot5);
+	knotVector.push_back(knot6);
+	knotVector.push_back(knot7);
+	knotVector.push_back(knot8);
+	knotVector.push_back(knot9);
+}
+
+
 void drawObjects()
 {
     Vec3f curveColor = Vec3f(0.1f, 0.1f, 0.1f);
@@ -386,6 +428,59 @@ void keyPressed(unsigned char key, int x, int y)
             ctrlPtsNurbs.clear();
 			break;
 		}
+		case '4': {
+			fillArrayWeightExample();
+			NURBSCurve *curve = new NURBSCurve(ctrlPtsNurbs, knotVector, 3);
+			nurbsCurves.push_back(*curve);
+			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+			knotVector.clear();
+			ctrlPtsNurbs.clear();
+			break;
+		}
+		case '5': {
+            nurbsCurves.clear();
+			runfloat--;
+			fillArrayWeightExample();
+			NURBSCurve *curve = new NURBSCurve(ctrlPtsNurbs, knotVector, 3);
+			nurbsCurves.push_back(*curve);
+			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+			knotVector.clear();
+			ctrlPtsNurbs.clear();
+		break;
+		}
+		case '6': {
+            nurbsCurves.clear();
+			runfloat++;
+			fillArrayWeightExample();
+			NURBSCurve *curve = new NURBSCurve(ctrlPtsNurbs, knotVector, 3);
+			nurbsCurves.push_back(*curve);
+			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+			knotVector.clear();
+			ctrlPtsNurbs.clear();
+			break;
+		}
+		case '7': {
+			nurbsCurves.clear();
+			runfloat0--;
+			fillArrayWeightExample();
+			NURBSCurve *curve = new NURBSCurve(ctrlPtsNurbs, knotVector, 3);
+			nurbsCurves.push_back(*curve);
+			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+			knotVector.clear();
+			ctrlPtsNurbs.clear();
+			break;
+		}
+		case '8': {
+			nurbsCurves.clear();
+			runfloat0++;
+			fillArrayWeightExample();
+			NURBSCurve *curve = new NURBSCurve(ctrlPtsNurbs, knotVector, 3);
+			nurbsCurves.push_back(*curve);
+			glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
+			knotVector.clear();
+			ctrlPtsNurbs.clear();
+			break;
+		}
 		case 'c':
 		case 'C': {
             nurbsCurves.clear();
@@ -393,6 +488,7 @@ void keyPressed(unsigned char key, int x, int y)
 			ctrlPtsNurbs.clear();
 			knotVector.clear();
             setDefaults();
+            runfloat = 0.0f;
             glutPostRedisplay(); // use this whenever 3d data changed to redraw the scene
 			break;
         }
@@ -493,6 +589,7 @@ void coutHelp()
     // TODO: update help text according to your changes
     // ================================================
 	std::cout << "------ " << std::endl;
+	std::cout << "a: select active " << std::endl;
 	std::cout << "B: draws a non rational Bezier Curve" << std::endl;
     std::cout << "R: draw circle with rational bezier curve" << std::endl;
     std::cout << "K: draws a cirlcle with nurbs Curve" << std::endl;

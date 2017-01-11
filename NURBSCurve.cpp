@@ -123,15 +123,18 @@ Vec4f NURBSCurve::evaluteDeBoor(const float t, Vec4f& tangent)
         }
         while (s <= tempNURBS.getDegree())
         {
-            if (s == tempNURBS.getDegree() - 1)
-            {
-                tangent = tempNURBS.getControlPoints()[k];
-            }
             tempNURBS.insertKnot(t);
             s++;
         }
         point = tempNURBS.getControlPoints()[k];
     }
+    // calculate tangent
+	Vec4f p1 = tempNURBS.getControlPoints()[k - 2];
+	Vec4f p2 = tempNURBS.getControlPoints()[k];
+	tangent.x = p1.w * p2.x - p2.w * p1.x;
+	tangent.y = p1.w * p2.y - p2.w * p1.y;
+	tangent.z = p1.w * p2.z - p2.w * p1.z;
+	tangent.w = p2.w * p1.w;
 	// =====================================================================================================================================
 	return point;
 

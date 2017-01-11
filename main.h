@@ -55,6 +55,8 @@ void fillArray();
 
 void fillArrayNurbsCircle();
 
+void fillArrayWeightExample();
+
 // =================
 // === RENDERING ===
 // =================
