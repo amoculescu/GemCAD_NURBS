@@ -29,6 +29,7 @@ std::vector<Vec4f> ctrlPtsNurbs;
 std::vector<float> knotVector;
 int runfloat = 0;
 int runfloat0 = 0;
+bool tangentFlag = false;
 
 int main(int argc, char** argv)
 {
@@ -277,7 +278,7 @@ void fillArrayWeightExample() {
 	float knot0 = 0;
 	float knot1 = 0;
 	float knot2 = 0;
-	float knot3 = 0 ;
+	float knot3 = 0;
 	float knot4 = 0.48 +0.05*runfloat0;
 	float knot5 = 0.66;
 	float knot6 = 1;
@@ -316,7 +317,7 @@ void drawObjects()
     {
         renderNURBS(nurbsCurves[i]);
         if(i == activeNURBS)
-            renderNURBSEvaluation(nurbsCurves[i], evalParameter);
+            renderNURBSEvaluation(nurbsCurves[i], evalParameter, tangentFlag);
     }
 }
 
@@ -518,6 +519,12 @@ void keyPressed(unsigned char key, int x, int y)
             glutPostRedisplay();
             break;
         }
+		case 't':
+		case 'T': {
+			tangentFlag = !tangentFlag;
+			glutPostRedisplay();
+			break;
+		}
 		case 'n':
 		case 'N': {
 			fillArrayNurbs();
@@ -602,6 +609,7 @@ void coutHelp()
     std::cout << "6: decrease weight" << std::endl;
     std::cout << "7: increase knot value" << std::endl;
     std::cout << "8: decrease knot value" << std::endl;
+    std::cout << "T: Display Tangents" << std::endl;
     // ================================================
     std::cout << "==========================" << std::endl;
     std::cout << std::endl;

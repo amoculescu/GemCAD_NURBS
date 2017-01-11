@@ -130,7 +130,7 @@ Vec4f NURBSCurve::evaluteDeBoor(const float t, Vec4f& tangent)
     }
     // calculate tangent
 	Vec4f p1 = tempNURBS.getControlPoints()[k - 2];
-	Vec4f p2 = tempNURBS.getControlPoints()[k];
+	Vec4f p2 = tempNURBS.getControlPoints()[k - 0];
 	tangent.x = p1.w * p2.x - p2.w * p1.x;
 	tangent.y = p1.w * p2.y - p2.w * p1.y;
 	tangent.z = p1.w * p2.z - p2.w * p1.z;

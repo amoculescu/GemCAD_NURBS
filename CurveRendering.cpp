@@ -240,61 +240,58 @@ void renderNURBS(NURBSCurve &nurbsCurve) {
     }
 }
 
-void renderNURBSEvaluation(NURBSCurve &nurbsCurve, float t) {
-    Vec3f color;
-    if (klickibunti) {
-        color = setcolor();
-    }
-    else {
-        color = Vec3f(1.0f, 1.0f, 1.0f);
-    }
-    if (!nurbsCurve.isValidNURBS())
-        return;
+void renderNURBSEvaluation(NURBSCurve &nurbsCurve, float t, bool flag)
+{
+	Vec3f color = Vec3f(1.0f, 1.0f, 1.0f);
+	if (!nurbsCurve.isValidNURBS())
+		return;
 
-    auto pointsAndTangents = nurbsCurve.evaluateCurve(size_t(50));
-    auto points = pointsAndTangents.first;
-    auto tangents = pointsAndTangents.second;
+	auto pointsAndTangents = nurbsCurve.evaluateCurve(size_t(50));
+	auto points = pointsAndTangents.first;
+	auto tangents = pointsAndTangents.second;
 
-    if (points.size() > 1 && nurbsCurve.getControlPoints().size() > 1) {
+	if (points.size() > 1 && nurbsCurve.getControlPoints().size() > 1)
+	{
 
-        // draw control polygon (x, y, w) not homogenized
-        color = Vec3f(0.7f, 0.5f, 0.0f);
-        drawNURBSCtrlPolygon(nurbsCurve, color);
-        // draw control polygon (x/w, y/w, w=1) homogenized
-        color = Vec3f(0.7f, 0.0f, 0.7f);
-        drawNURBSCtrlPolygon_H(nurbsCurve, color);
+		// draw control polygon (x, y, w) not homogenized
+		color = Vec3f(0.7f, 0.5f, 0.0f);
+		drawNURBSCtrlPolygon(nurbsCurve, color);
+		// draw control polygon (x/w, y/w, w=1) homogenized
+		color = Vec3f(0.7f, 0.0f, 0.7f);
+		drawNURBSCtrlPolygon_H(nurbsCurve, color);
 
-        // draw tangents of the not homogenized curve
-        /*glColor3f(0.5f, 0.35f, 0.0f);
-        glBegin(GL_LINES);
-        for (unsigned int i = 0; i < tangents.size(); ++i)
-        {
-            Vec3f point1 = {points[i].x,
-                            points[i].y,
-                            points[i].z,};
-            Vec3f point2 = {tangents[i].x,
-                            tangents[i].y,
-                            tangents[i].z,};
+		if (flag) {
 
-            glVertex3fv(&point1.x);
-            glVertex3fv(&point2.x);
-        }
-        glEnd();
-        // draw tangents of the homogenized curve
-        glColor3f(0.5f, 0.0f, 0.5f);
-        glBegin(GL_LINES);
-        for (unsigned int i = 0; i < tangents.size(); ++i) {
-            auto p = points[i];
-            auto t = tangents[i];
-            p = p / p.w;
-            t = t / t.w;
-            t = p + t;
-            glVertex3fv(&p.x);
-            t = (t - p).normalized() + p;
-            glVertex3fv(&t.x);
-        }
-        glEnd();*/
-    }
+		// draw tangents of the not homogenized curve
+		glColor3f(0.5f, 0.35f, 0.0f);
+		glBegin(GL_LINES);
+		for (unsigned int i = 0; i < tangents.size(); ++i)
+		{
+			auto p = points[i];
+			auto t = tangents[i];
+			t = Vec4f(t.w * p.x + p.w * t.x, t.w * p.y + p.w * t.y, t.w * p.z + p.w * t.z, 1.0f);
+			glVertex3fv(&p.x);
+			t = (t - p).normalized() + p;
+			glVertex3fv(&t.x);
+		}
+		glEnd();
+		// draw tangents of the homogenized curve
+		glColor3f(0.5f, 0.0f, 0.5f);
+		glBegin(GL_LINES);
+		for (unsigned int i = 0; i < tangents.size(); ++i)
+		{
+			auto p = points[i];
+			auto t = tangents[i];
+			p = p / p.w;
+			t = t / t.w;
+			t = p + t;
+			glVertex3fv(&p.x);
+			t = (t - p).normalized() + p;
+			glVertex3fv(&t.x);
+		}
+		glEnd();
+		}
+	}
 }
 
 Vec3f setcolor() {
