@@ -311,9 +311,8 @@ void keyPressed(unsigned char key, int x, int y)
         break;
     // help file
         case '1':
-        {
             setKlickiBunti();
-        }
+            break;
         case 'h' :
         case 'H' :
             coutHelp();
